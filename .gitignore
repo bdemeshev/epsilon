@@ -1,0 +1,14 @@
+*.synctex
+*.synctex.gz
+*.log
+*.out
+*.aux
+texput.*
+*.bak
+*.sav
+*.bbl
+*.blg
+*.toc
+*.run.xml
+*.bcf
+
