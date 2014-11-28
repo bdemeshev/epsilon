@@ -13,6 +13,7 @@
 
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \maketitle 
 
@@ -44,7 +45,7 @@
 \medskip (1) Скачав данные с сайта, загружаем файл с учебной выборкой командой <<file>>:
 
 <<>>=
-to.read <- file("C:/Users/Mu/Desktop/Digits/MNIST/train-images-idx3-ubyte", "rb")
+to.read <- file("train-images-idx3-ubyte", "rb")
 @
 
 \medskip (2) Данные устроены таким образом, что в самом начале мы читаем заголовок из четырех чисел. Эти первые четыре числа содержат информацию о размерах выборки, упомянутых выше. Считываем их из полученного объекта <<to.read>> с помощью функции для чтения бинарных данных <<readBin>>.
@@ -88,7 +89,7 @@ for(i in 1:36)
 Заголовок в данном случае состоит из двух чисел, а данные должны восприниматься R не как числа, а как категории: этого можно добиться с помощью команды <<as.factor>>.
 
 <<>>=
-to.read <- file("C:/Users/Mu/Desktop/Digits/MNIST/train-labels-idx1-ubyte", "rb")
+to.read <- file("train-labels-idx1-ubyte", "rb")
 header <- readBin(to.read, integer(), n=2, endian="big")
 
 Train_labels <- readBin(to.read, integer(), size = 1, n=60000, signed = FALSE, endian="big")
@@ -127,7 +128,7 @@ Train_labels <- as.factor(Train_labels)
 \paragraph{} Воспользуемся теперь пакетом FNN\cite{FNN}, предварительно проделав с данными для тестовой выборки то же, что и с учебными: в итоге получив два больших массива <<TRAIN>> и <<TEST>>, а так же два вектора ответов <<Trainlabels>> и <<Testlabels>>. 
 
 <<echo=FALSE>>=
-to.read <- file("C:/Users/Mu/Desktop/Digits/MNIST/t10k-images-idx3-ubyte", "rb")
+to.read <- file("t10k-images-idx3-ubyte", "rb")
 header <- readBin(to.read, integer(), n=4, endian="big")
 
 TEST <- array(data = NA, dim = c(28,28,10000))
@@ -137,7 +138,7 @@ for(i in 1:10000)
   TEST[,,i] <- matrix(readBin(to.read,integer(), size=1, n=28*28,signed = FALSE, endian="big"),28,28);
 }
 
-to.read <- file("C:/Users/Mu/Desktop/Digits/MNIST/t10k-labels-idx1-ubyte", "rb")
+to.read <- file("t10k-labels-idx1-ubyte", "rb")
 header <- readBin(to.read, integer(), n=2, endian="big")
 
 Test_labels <- readBin(to.read, integer(), size = 1, n=10000, signed = FALSE, endian="big")
