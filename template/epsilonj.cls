@@ -570,7 +570,7 @@ language=auto
 \long\def\@maketablecaption#1#2{%
 	\vskip\abovecaptionskip%
     \parbox[t]{\hsize}{
-      \centering\small\textbf{#1} #2\par}
+      \centering\small\textbf{#1.} #2\par}
   }
 
 % figure : use \@makecaption:
@@ -578,7 +578,7 @@ language=auto
   \vskip\abovecaptionskip
   \sbox\@tempboxa{\hskip\true@parindent\textbf{#1}.~#2}%
   \ifdim \wd\@tempboxa >\hsize
-    \hskip\true@parindent\textsc{#1}.--- #2\par
+    \hskip\true@parindent\textbf{#1.} #2\par
   \else
     \global \@minipagefalse
     \hb@xt@\hsize{\hfil\hskip-\true@parindent\box\@tempboxa\hfil}%
