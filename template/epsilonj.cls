@@ -108,11 +108,13 @@
 \LoadClass{article}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T2A]{fontenc}
-\RequirePackage[russian]{babel}
+\RequirePackage[english,russian]{babel}
 \RequirePackage[cmex10]{amsmath}
 \RequirePackage{amsfonts,amssymb,amsthm}
 \RequirePackage{xspace}
+\RequirePackage{xcolor}
 \RequirePackage{booktabs}
+\RequirePackage{indentfirst}
 
 \RequirePackage{enumitem}
 \AddEnumerateCounter{\Asbuk}{\@Asbuk}{\CYRM}
@@ -138,6 +140,7 @@ isbn=false,
 eprint=false,
 language=auto
 ]{biblatex}
+% \addbibresource{epsilon.bib}
 %\usepackage{paratype}
 
 
@@ -1442,6 +1445,7 @@ language=auto
 
 \newcommand{\ENGs}[1]{\foreignlanguage{english}{#1}}
 
+\newcommand{\primred}[1]{{\color{red} \textit{Прим. ред.}\quad #1}}
 
 % % % % % Собственный стиль
 
@@ -1450,6 +1454,8 @@ language=auto
 \let\myfootnote\footnote
 \renewcommand{\footnote}[1]{\myfootnote{\;#1}}
 \setlength{\parindent}{1.5em}
+
+\hyphenation{ап-про-к-си-ми-ро-вать}
 
 \endinput
 %%
