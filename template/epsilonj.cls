@@ -100,7 +100,7 @@
 % Set draft to default
 %\ExecuteOptions{draft}
 
-\PassOptionsToClass{fleqn,leqno,twoside}{article}
+\PassOptionsToClass{twoside}{article}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions*
@@ -141,17 +141,6 @@ language=auto
 %\usepackage{paratype}
 
 
-% % % % % % % % % % % % % % % % % % % Собственные определения команд
-
-\def\ellipsiskern{.1em\relax}
-\newcommand{\ldotst}{.\kern\ellipsiskern.\kern\ellipsiskern.} % для . . .
-\newcommand{\ldotse}{!\kern\ellipsiskern.\kern\ellipsiskern.} % для ! . .
-\newcommand{\ldotsq}{?\kern\ellipsiskern\kern-.11em.\kern\ellipsiskern.} % для ? . .
-\raggedbottom
-\newcommand{\fnnsp}{\kern-0.4em\relax}
-\righthyphenmin=2
-\let\myfootnote\footnote
-\renewcommand{\footnote}[1]{\myfootnote{\;#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modifications and "add-on" for article.cls starts:
 
@@ -1390,7 +1379,77 @@ language=auto
 \init@settings
 \pagestyle{epsheadings}
 
+% % % % % % % % % % % % % % % % % % % % % % % User command (AVK)
+
+\def\ellipsiskern{.1em\relax}
+\newcommand{\ldotst}{.\kern\ellipsiskern.\kern\ellipsiskern.} % для . . .
+\newcommand{\ldotse}{!\kern\ellipsiskern.\kern\ellipsiskern.} % для ! . .
+\newcommand{\ldotsq}{?\kern\ellipsiskern\kern-.11em.\kern\ellipsiskern.} % для ? . .
+\newcommand{\fnnsp}{\kern-0.4em\relax}
+
 \def\tagform@#1{\maketag@@@{{\footnotesize\textsf{(#1)}}\@@italiccorr}}
+
+\newcommand{\E}{\mathbb{E}}                 % Мат. ожидание
+\newcommand{\e}{\varepsilon}                % эпсилон
+\newcommand{\p}{\partial}                   % частная производная
+\newcommand{\PP}{\mathbb{P}}                % Вероятность
+\newcommand{\bs}[1]{\boldsymbol{#1}}        % ЖИРНЫЙ последующий символ имени матрицы или векторы
+\renewcommand{\to}{\rightarrow}                   % Правильная стрелка вправо («стремится»)
+\newcommand{\const}{\ensuremath{\text{const}}}        % const прямым начертанием
+\newcommand{\CONST}{\mathbb{C}}
+\newcommand{\assim}{\mathrel{\stackrel{\text{as}}\sim}}
+\newcommand{\iid}{\text{i.\kern1pt i.\kern1pt d.}}
+\renewcommand{\iff}{\hskip.5em plus.1em minus.1em \Leftrightarrow\hskip.5em plus.1em minus.1em\relax}
+\newcommand{\protivor}{\text{\textreferencemark}}
+\providecommand{\hence}{\hskip.5em plus.1em\Rightarrow\hskip.5em plus.1em}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\ddd}{\mathrm{d}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\simhypo}{\mathrel{\stackrel{\hypo_0}{\sim}}}
+\newcommand{\ofe}[1]{\bigl( \{#1\} \bigr)}
+\DeclareMathOperator{\Corr}{Corr}       % Оператор корреляции
+\DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\Cov}{Cov}         % Оператор ковариации
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\Var}{Var}         % Оператор дисперсии
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\rang}{rank}       % Оператор ранга
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator*{\plim}{plim}      % Оператор предела по вероятности
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\trace}{tr}
+
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\Studt}{\mathsf{t}}
+\newcommand{\Fish}{\mathsf{F}}
+\newcommand{\DF}{\ensuremath{\mathsf{DF}}}
+\newcommand{\DW}{\ensuremath{\mathsf{DW}}}
+\newcommand{\WN}{\ensuremath{\mathsf{WN}}}
+\newcommand{\hypo}{\mathcal{H}}
+\newcommand{\ARMA}[2]{\ensuremath{\text{ARMA}(#1; #2)}}
+\newcommand{\ARCH}[1]{\ensuremath{\text{ARCH}(#1)}}
+\newcommand{\GARCH}[2]{\ensuremath{\text{GARCH}(#1; #2)}}
+\newcommand{\ARIMA}[3]{\ensuremath{\text{ARIMA}(#1; #2 ; #3)}}
+\newcommand{\AR}[1]{\ensuremath{\text{AR}(#1)}}
+\newcommand{\MA}[1]{\ensuremath{\text{MA}(#1)}}
+\newcommand{\VAR}[1]{\ensuremath{\text{VAR}(#1)}}
+\newcommand{\pval}{\ensuremath{p_{\text{val}}}}
+
+\newcommand{\ENGs}[1]{\foreignlanguage{english}{#1}}
+
+
+% % % % % Собственный стиль
+
+\raggedbottom
+\righthyphenmin=2
+\let\myfootnote\footnote
+\renewcommand{\footnote}[1]{\myfootnote{\;#1}}
+\setlength{\parindent}{1.5em}
 
 \endinput
 %%
