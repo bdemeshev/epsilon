@@ -25,11 +25,11 @@
 %%    http://www.latex-project.org/lppl.txt
 %%  and version 1.3 or later is part of all distributions of LaTeX
 %%  version 2005/12/01 or later.
-%% 
+%%
 %%  This work has the LPPL maintenance status `maintained'.
-%%  
+%%
 %%  The Current Maintainer of this work is A. V. Kostyrka.
-%% 
+%%
 %%  This work consists of the file epsilonj.sty
 %%
 %% Bug fixes and changes:
@@ -65,7 +65,7 @@
 % Change in layout: put addresses as footnotes
 \newif\if@addressasfootnote
 \@addressasfootnotetrue
-\DeclareOption{addressasfootnote}{\@addressasfootnotetrue}                  
+\DeclareOption{addressasfootnote}{\@addressasfootnotetrue}
 \DeclareOption{addressatend}     {\@addressasfootnotefalse}
 
 
@@ -73,7 +73,7 @@
 
 % "draft" option must be used for submission:
 \newif\if@epsdraft \@epsdraftfalse
-                                             
+
 \DeclareOption{draft}{%
   \AtBeginDocument{\let\appendix@size\normalsize}
   \AtBeginDocument{\renewcommand{\baselinestretch}{1.4}\large\normalsize}
@@ -256,7 +256,7 @@ language=auto
   \gdef\@issue{}
 
 \def\paperno#1{\gdef\@paperno{Paper no. #1 }}
-  \gdef\@paperno{00} 
+  \gdef\@paperno{00}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% firstpage, lastpage, pagerange
@@ -352,7 +352,7 @@ language=auto
 % Suformuojame ir isvedame zyme
 \def\thanksmark{\@ifnextchar[{\@tempswatrue\@thanksmark}{\@tempswafalse\@thanksmark[]}}
 
-\def\@thanksmark[#1]#2{%  
+\def\@thanksmark[#1]#2{%
    \@thankslabel[#1]{#2}%
    \safelabel{#2thanks}%
    \thanksmark@fmt{\expandafter\saferef{#2thanks}\thanks@hypertarget{#2}}}
@@ -363,7 +363,7 @@ language=auto
 \def\@thankslabel[#1]#2{%
   \if@tempswa% []
      \protected@edef\@currentlabel{#1}%
-   \else% 
+   \else%
       \refstepcounter{\current@thankscounter}%
    \fi%
    \safelabel{#2thanks}}%
@@ -419,7 +419,7 @@ language=auto
 \def\@@printead[#1]#2{%
    \if@tempswa% []
      {\ead@size #1}%
-   \else% 
+   \else%
      \def\ead@type{email}%
      \def\ead@prefix{mailto:}%
      \let\ead@text\email@text%
@@ -428,7 +428,7 @@ language=auto
          \@ead@sep\let\@ead@sep\ead@sep%
          \@ifundefined{r@\ead@ref @url}{}{\let\ead@text\url@text\def\ead@type{url}\def\ead@prefix{http://}}%
          \ifnot@ead@star\ead@text\fi{\ead@size\def\null{}\ims@href{\ead@prefix\saferef{\ead@ref @\ead@type}}{\saferef{\ead@ref @\ead@type}}}%
-         \let\ead@text\relax}%                        
+         \let\ead@text\relax}%
    \fi%
 }
 
@@ -603,7 +603,7 @@ language=auto
 
 \def\@makefnmark{\@textsuperscript{\normalfont\@thefnmark}}%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRONTMATTER 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FRONTMATTER
 % FRONT MATTER FORMATTING PARAMETERS
 
 \setattribute{frontmatter} {style} {\centering}
@@ -634,11 +634,11 @@ language=auto
   \setattribute{abstract}   {width} {26pc}
   \setattribute{keyword}    {width} {26pc}
 \fi
-\setattribute{abstract}  {indent} {\true@parindent} 
-\setattribute{keyword}   {indent} {\true@parindent} 
+\setattribute{abstract}  {indent} {\true@parindent}
+\setattribute{keyword}   {indent} {\true@parindent}
 \setattribute{history}    {width} {\textwidth}
 
-% FRONT MATTER FONTS 
+% FRONT MATTER FONTS
 \setattribute{dochead}    {size} {\normalsize}
 \setattribute{title}      {size} {\fontsize{14}{16}\selectfont}
 \setattribute{author}     {size} {\normalsize\scshape}
@@ -691,8 +691,8 @@ language=auto
 \def\author@num{0}
 
 % RUNNING HEAD
-\def\runtitle#1{\gdef\@runtitle{\runninghead@case{#1}}}                      
-\def\runauthor#1{{\def\etal{и др.}\gdef\@runauthor{\runninghead@case{#1}}}} 
+\def\runtitle#1{\gdef\@runtitle{\runninghead@case{#1}}}
+\def\runauthor#1{{\def\etal{и др.}\gdef\@runauthor{\runninghead@case{#1}}}}
 
 \newdimen\sv@parindent
 \sv@parindent\parindent
@@ -741,8 +741,8 @@ language=auto
   \hy@endfrontmatter
   \global\mathsurround\sv@mathsurround
   \global\c@footnote\z@
-  \global\let\@thanks\@empty  
-  \global\let\title\relax       
+  \global\let\@thanks\@empty
+  \global\let\title\relax
   \global\let\author\relax
   \aftergroup\frontmatter@cmd
   }
@@ -822,7 +822,7 @@ language=auto
   \stepcounter{avtor}%
   \author@fmt@init%
   \let\author@fmt@init\relax%
-  \bgroup% 
+  \bgroup%
      \def\degs##1{##1}\def\imya##1{##1}\def\inits##1{##1}\def\fam##1{##1}\def\roles##1{##1}%
      \@tempcnta=\author@num\relax%
      \ifnum\c@avtor=\@tempcnta \def\author@sep{ и~}\else \def\author@sep{, }\fi%
@@ -1041,7 +1041,7 @@ language=auto
 \setattribute[default]{keyword}{class}{KWD}
 
 %  \keyword@class-> KWD
-%  \keyword@KWD  -> AMS 2000... 
+%  \keyword@KWD  -> AMS 2000...
 
 \gdef\keyword{\@ifnextchar[{\@keyword}{\@keyword[class=KWD]}}
 
@@ -1077,7 +1077,7 @@ language=auto
   \def\sep{\unskip\string, }%
 
   \DeclareRobustCommand*\kwd{\@ifnextchar[\@kwd{\@kwd[\kwd@sep]}}%
-  \def\@kwd[#1]#2{\unskip#1{#2}\addto@keywords@list{#2, }\let\kwd@sep\sep}%  
+  \def\@kwd[#1]#2{\unskip#1{#2}\addto@keywords@list{#2, }\let\kwd@sep\sep}%
 
 
 %%%%% Tittle (Cover) page
@@ -1132,25 +1132,25 @@ language=auto
   \thispagestyle{copyright}%
 %
   \print@titlepage
-% 
+%
   \bgroup%
      \title@style\title@size\title@case{\@title}\par%
   \egroup%
 %
   \vskip\authors@skip%
-  \bgroup    
+  \bgroup
    \leavevmode\author@style\author@size\author@prefix
    \@author\par
   \egroup
 %
-  \put@fmt@data%  
+  \put@fmt@data%
 %
   \write@pdfinfo{\hy@author}{\the\authors@list}
   \write@pdfinfo{\hy@keywords}{\the\keywords@list}
   \hy@endfrontmatter
   \global\mathsurround\sv@mathsurround
   \global\c@footnote\z@
-  \global\let\@thanks\@empty  
+  \global\let\@thanks\@empty
   \let\title\@gobble
   \let\author\@gobble
   \let\frontmatter\relax \let\endfrontmatter\relax
@@ -1295,7 +1295,7 @@ language=auto
 }
 
   \def\@appsectionnostar#1{%
-     \ifx.#1.% 
+     \ifx.#1.%
        \def\section@numbersep{}\old@section[\appendixname\ \thesection]{}%
      \else%
        \def\section@numbersep{:}\old@section{#1}%
@@ -1344,8 +1344,8 @@ language=auto
      \addtolength\numberlines@box@skip{5\p@}
    %
      \setbox\numberlines@box\vtop to\textheight{%
-       \parindent\z@    
-       \vskip\z@   
+       \parindent\z@
+       \vskip\z@
        \@tempcnta=0
        \@tempdima=\z@
        \loop
@@ -1454,6 +1454,7 @@ language=auto
 \let\myfootnote\footnote
 \renewcommand{\footnote}[1]{\myfootnote{\;#1}}
 \setlength{\parindent}{1.5em}
+\numberwithin{equation}{section}
 
 \hyphenation{ап-про-к-си-ми-ро-вать}
 
