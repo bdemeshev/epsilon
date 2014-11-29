@@ -5,10 +5,6 @@
 
 \RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 
-\startlocaldefs
-\numberwithin{equation}{section}
-\endlocaldefs
-
 \usepackage{colortbl}
 \definecolor{rrow}{rgb}{1,0.9,1}
 \definecolor{ccol}{rgb}{1,1,0.6}
@@ -33,7 +29,7 @@
 			Аннотация должна передавать краткое содержание работы.
 			Она должна быть ясной, содержательной, релевантной и~короткой
 			(не более 150~слов). Аннотация должна содержать информацию,
-			необходимую для поиска по базам научных работ. 
+			необходимую для поиска по базам научных работ.
 			В~аннотации не должно быть математических формул.
 		\end{abstract}
 		
@@ -55,7 +51,7 @@
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=8cm]{munk.jpg}
+	\includegraphics[width=8cm]{munk-small.jpg}
 	\caption{Лицо обычного человека, у~которого спросили, что такое $p$-value}
 \end{figure}
 
@@ -127,7 +123,7 @@
 	\item \textit{Пример.} У~нас есть две переменные: количество красных машин и~количество синих машин. Поэтому степеней свободы всего $2-1=1$, т.\,е. одна.
 \end{itemize}
 
-\textbf{Ступень 5. Сравните наблюдаемые результаты с~ожидаемыми с~помощью распределения $\chi^2$.} $\chi^2$ "--- статистика, численно измеряющая разницу между ожидаемыми и~наблюдаемыми результатами. Уравнение: 
+\textbf{Ступень 5. Сравните наблюдаемые результаты с~ожидаемыми с~помощью распределения $\chi^2$.} $\chi^2$ "--- статистика, численно измеряющая разницу между ожидаемыми и~наблюдаемыми результатами. Уравнение:
 \[
 \chi^2=\sum_{i=0}^{n} \frac {(h_i-e_i)^2}{e_i},
 \]
@@ -150,7 +146,7 @@
 
 \begin{table}[hbt]
 	\begin{tabular}{|r|rrrrrrrrr|} \toprule
-		& \multicolumn{9}{c|}{$p$-value} \\ 
+		& \multicolumn{9}{c|}{$p$-value} \\
 		df  & 20\%  & 10\%  & \cellcolor{ccol} 5\%   & 2{,}5\% & 1\%   & 0{,}5\% & 0{,}25\% & 0{,}1\% & 0{,}05\% \\ \cmidrule{2-10}
 	\cellcolor{rrow}	1  & \cellcolor{rrow} 1{,}64  & \cellcolor{rrow} 2{,}71  & \cellcolor{inters} 3{,}84  & \cellcolor{rrow} 5{,}02  & \cellcolor{rrow} 6{,}63  & \cellcolor{rrow} 7{,}88  & \cellcolor{rrow} 9{,}14   & \cellcolor{rrow} 10{,}83 & \cellcolor{rrow} 12{,}12  \\
 		2  & 3{,}22  & 4{,}61  & \cellcolor{ccol} 5{,}99  & 7{,}38  & 9{,}21  & 10{,}60 & 11{,}98  & 13{,}82 & 15{,}20  \\
