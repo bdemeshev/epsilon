@@ -115,6 +115,8 @@
 \RequirePackage{xcolor}
 \RequirePackage{booktabs}
 \RequirePackage{indentfirst}
+\RequirePackage{microtype}
+\RequirePackage{graphicx}
 
 \RequirePackage{enumitem}
 \AddEnumerateCounter{\Asbuk}{\@Asbuk}{\CYRM}
@@ -417,19 +419,20 @@ language=auto
 \def\@printead{\@ifnextchar[{\@tempswatrue\@@printead}{\@tempswafalse\@@printead[]}}
 
 \def\@@printead[#1]#2{%
-   \if@tempswa% []
-     {\ead@size #1}%
-   \else%
-     \def\ead@type{email}%
-     \def\ead@prefix{mailto:}%
-     \let\ead@text\email@text%
-     \let\@ead@sep\relax%
-     \@for\ead@ref:=#2\do{%
-         \@ead@sep\let\@ead@sep\ead@sep%
-         \@ifundefined{r@\ead@ref @url}{}{\let\ead@text\url@text\def\ead@type{url}\def\ead@prefix{http://}}%
-         \ifnot@ead@star\ead@text\fi{\ead@size\def\null{}\ims@href{\ead@prefix\saferef{\ead@ref @\ead@type}}{\saferef{\ead@ref @\ead@type}}}%
-         \let\ead@text\relax}%
-   \fi%
+	\if@tempswa% []
+	{\ead@size #1}%
+	\else% 
+	\def\ead@type{email}%
+	\def\ead@prefix{mailto:}%
+	\let\ead@text\email@text%
+	\let\@ead@sep\relax%
+	\@for\ead@ref:=#2\do{%
+		\@ead@sep\let\@ead@sep\ead@sep%
+		\@ifundefined{r@\ead@ref @url}{}{\let\ead@text\url@text\def\ead@type{url}\def\ead@prefix{http://}}%
+		\ifnot@ead@star\ead@text\fi{\ead@size\def\null{}%
+			\@ifundefined{r@\ead@ref @\ead@type}{}{\href{\ead@prefix\saferef{\ead@ref @\ead@type}}{\saferef{\ead@ref @\ead@type}}}}%
+		\let\ead@text\relax}%                        
+	\fi%
 }
 
 
@@ -645,7 +648,7 @@ language=auto
 \setattribute{address}    {size} {\normalsize\itshape}
 \setattribute{affiliation}{size} {\normalsize\itshape}
 \setattribute{dedicated}  {size} {\normalsize\itshape}
-\setattribute{ead}        {size} {\upshape\ttfamily}
+\setattribute{ead}        {size} {} % \upshape\ttfamily}
 \setattribute{abstract}   {size} {\footnotesize\upshape\mdseries}
 \setattribute{abstractname}{size} {\footnotesize\upshape\bfseries}
 \setattribute{keyword}    {size} {\footnotesize\upshape\mdseries}
