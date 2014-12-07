@@ -37,12 +37,11 @@
 %% Requires Latex2e, ver.2000.06
 
 \def\epsfmt@name{epsilonj.cls}
-\def\epsfmt@version{2014/11/26}
+\def\epsfmt@version{2014/12/07}
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{epsilonj}
-   [\epsfmt@version Класс для статей журнала «Эпсилон» ]
+\ProvidesClass{epsilonj}[\epsfmt@version Класс для статей журнала «Эпсилон»]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% General options:
 
