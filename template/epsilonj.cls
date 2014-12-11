@@ -132,14 +132,16 @@
 {\textquotedblright}
 
 \RequirePackage[
-backend=biber,
-style=gost-authoryear,
-sortlocale=ru_RU,
-url=false,
-doi=false,
-isbn=false,
-eprint=false,
-language=auto
+  backend=biber,
+  bibstyle=gost-authoryear,
+  citestyle=gost-authoryear,
+  movenames=false,
+  sortlocale=ru_RU,
+  url=false,
+  doi=false,
+  isbn=false,
+  eprint=false,
+  language=auto
 ]{biblatex}
 % \addbibresource{epsilon.bib}
 %\usepackage{paratype}
