@@ -107,7 +107,7 @@
 \LoadClass{article}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T2A]{fontenc}
-\RequirePackage[english,russian]{babel}
+\RequirePackage[english, russian, KeepShorthandsActive]{babel}
 \RequirePackage[cmex10]{amsmath}
 \RequirePackage{amsfonts,amssymb,amsthm}
 \RequirePackage{xspace}
@@ -116,6 +116,7 @@
 \RequirePackage{indentfirst}
 \RequirePackage{microtype}
 \RequirePackage{graphicx}
+\RequirePackage{subfigure}
 
 \RequirePackage{enumitem}
 \AddEnumerateCounter{\Asbuk}{\@Asbuk}{\CYRM}
@@ -133,6 +134,7 @@
 
 \RequirePackage[
   backend=biber,
+  natbib=true,
   bibstyle=gost-authoryear,
   citestyle=gost-authoryear,
   movenames=false,
@@ -1399,6 +1401,8 @@
 \newcommand{\E}{\mathbb{E}}                 % Мат. ожидание
 \newcommand{\e}{\varepsilon}                % эпсилон
 \newcommand{\p}{\partial}                   % частная производная
+\newcommand{\iu}{{\mkern1mu\mathrm{i}\mkern1mu}} % Мнимая единица
+\newcommand{\ee}{{\mkern1mu\mathrm{e}\mkern1mu}} % Экспонента
 \newcommand{\PP}{\mathbb{P}}                % Вероятность
 \newcommand{\bs}[1]{\boldsymbol{#1}}        % ЖИРНЫЙ последующий символ имени матрицы или векторы
 \renewcommand{\to}{\rightarrow}                   % Правильная стрелка вправо («стремится»)
