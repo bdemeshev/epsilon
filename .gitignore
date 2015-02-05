@@ -12,6 +12,7 @@ texput.*
 *.run.xml
 *.bcf
 .Rhistory
+/e_001/articles
 
 # Больно тяжёлые 4 файла, которые всегда можно скачать
 t10k-images-idx3-ubyte
