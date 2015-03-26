@@ -148,7 +148,7 @@
 % \addbibresource{epsilon.bib}
 %\usepackage{paratype}
 
-
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modifications and "add-on" for article.cls starts:
 
