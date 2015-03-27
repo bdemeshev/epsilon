@@ -29,12 +29,31 @@
 	
 	% \microtypesetup{protrusion=true, expansion=true}
 	
-	\section{Влияние позиции участника на результат}
+	\section{Теория хаоса и экономические данные}
 
 Методологически полезно отметить, что от выбора начальной точки сильно зависит результат эксперимента. К примеру, если симуляции проводятся посредством расчёта полной траектории после небольшого случайного сдвига в районе области высокой плотности аттрактора, через которую проходит множество траекторий, то результат будет давать хорошее представление о природе данных (рис. ***). Однако если в качестве начальной точки взять координату, через которую не проходит ни одна траектория аттрактора, и немного её двигать, то тогда результирующие траектории будут в начале пути очень похожи, объектам симуляции будет присущ один и тот же случайный артефакт, и распределение оценок корреляционной размерности будет неестественным и далёким от истины.
 
 Пример. Рассмотрим аттрактор Руклиджа. 0,0,0  плохо, 0,0,5 "--- хорошо.
 
+В отличие от регрессионного анализа, в теории хаоса нельзя взять 140~точек, как сделал это господин Мак-Фадден в далёком 1973 году \citep{mcfadden73clogit}, и оценить модель, на основании которой были бы сделаны выводы о вложении крупных сумм в развитие того или иного вида транспорта. Одним из основных требований к данным, к которым применяется метод оценивания корреляционной размерности, является \textit{бесконечное количество} точек. Если всё-таки вернуться с небес и коснуться ногами земли, мы заметим, что было бы очень желательно, чтобы область, в которой колеблется многомерный процесс, была как можно детальнее покрыта его траекториями. В противном случае реконструкция фазового пространства будет неточна, а оценка корреляционной размерности "--- неточной.
+
+Симуляционный эксперимент будет проведён следующим образом. Мы сгенерируем тысячи траекторий, описываемых различными классическими уравнениями теории хаоса, из случайно выбираемых из некоторой области начальных точек. Для каждого многомерного аттрактора в качестве области начальных значений будет выбираться регион с максимальной плотностью траекторий: в таком случае даже минимальное смещение начальной координаты будет иметь громадный эффект на всю дальнейшую динамику системы. Генератор псевдослучайных чисел, используемый в данном анализе, основан на вихре Мерсенна \citep{matsumoto1998mersenne}, имеет период $4\approx{,}3\cdot 10^{6001}$ и даёт равномерное распределение в 623-мерном пространстве, поэтому в равномерном покрытии области начальных координат можно не сомневаться. Затем полученные идеальные траектории будут «испорчены» в соответствии с каждой из опускаемых предпосылок для того, чтобы их свойства были ближе к свойствам реальных данных. После этого метод оценивания корреляционной размерности будет применён к «идеальной» модели и к её «испорченному» варианту, а результаты оценивания "--- приведены в виде распределения результатов. В качестве метода получения оценки корреляционной размерности будет использован популярный алгоритм из статьи \citet{grassberger1983measuring}. 
+
+What we did? We generated hundreds or thousands of trajectories governed by the system of equations from slightly different initial points (they are very sensitive, so the resulting trajectories were truly unique). Then, for each trajectory, we computed the correlation integral for the set of points that make up the trajectory---using the function corrDim. THe estimates were plotted as a density plot.
+
+Color-coded for your convenience
+
+They even fail to converge to a finite distribution
+
+With the increase of the number of points, the problem of dimension underestimation fades away, you see, but the computational complexity grows like $O(n^2)$. Besides that, if the series are too long, then the underlying parameters of the model may change, so you will be trying to interpolate some trajectories that do not exist anymore, and will fail at that. Finally, Sivakumar reports that on finite samples, higher embedding dimensions can provoke upward bias of the correlation dimension etimate.
+
+What is it? Imagine random dots filling a line. Let's count the neighbours of that point within a certain radius. If we increase the radius and the points are in fact filling the line, then the number of neighbours will grow... at a linear rate with respect to the radius. Now let's consider a 2-dimensional plane being densely filled with dots. If we count all the neighbours of a point within a growing neighbourhood, what is this neighbourhood? A circle, and its area is growing at the rate r squared, and so does the number of neighbours. If it were a sphere, then the growing rate would be r cubed. However, for some object, this growth rate is fractional. This is OK, because if the growth rate, just like in macro, is $\nu$, then the regression $c(r) = A_0 r^\nu \ee^\e$ allows us to obtain $\nu$ from $\ln c = a_0 + \nu \ln r + \e$, so this is growth rate at which the number of neighbour points grows, and by definition, the correlation dimension.
+On finite samples you may have to do some math cooking in order to remove the bias, like truncating the endpoints 
+They used to fit the curve on the middle quarter of the curve, because it is not linear with respect to $\ln r$, but now they use some robust techniques like median regression.
+
+
+??? Interpolate
+??? FInite
 
 
 \end{document}
