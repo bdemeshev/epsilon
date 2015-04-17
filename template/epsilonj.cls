@@ -240,6 +240,7 @@
     {\org@end{#1}}{\csname pseudo@#1\endcsname[1]\relax}%
   }
 \def\newpseudoenvironment#1#2#3{%
+
   \expandafter\gdef\csname pseudo@#1\endcsname[##1]{%
      \relax\ifcase##1\relax\def\@@next@@{#2}\or\def\@@next@@{#3}\else\let\@@next@@\relax\fi\@@next@@}%
   }
@@ -1433,6 +1434,7 @@
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\arsh}{arsh}
 
 
 \renewcommand{\phi}{\varphi}
