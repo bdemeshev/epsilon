@@ -13,9 +13,9 @@
 		\runtitle{Распознавание рукописных цифр}
 		
 		\begin{aug}
-			\author{\imya{Александра} \fam{Кузнецова}}%
+			\author{\imya{Саша} \fam{Кузнецова}}%
 			
-			\runauthor{А.~Кузнецова}
+			\runauthor{Саша~Кузнецова}
 			
 			\address{НИУ ВШЭ, Москва.}
 		\end{aug}
