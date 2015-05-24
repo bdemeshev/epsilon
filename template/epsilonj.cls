@@ -117,6 +117,7 @@
 \RequirePackage{microtype}
 \RequirePackage{graphicx}
 \RequirePackage{subfigure}
+\RequirePackage{fancyvrb}
 
 \RequirePackage{enumitem}
 \AddEnumerateCounter{\Asbuk}{\@Asbuk}{\CYRM}
@@ -1399,7 +1400,11 @@
 
 \def\tagform@#1{\maketag@@@{{\footnotesize\textsf{(#1)}}\@@italiccorr}}
 
-% proglang и pkg яки в JSS
+% code, proglang и pkg яки в JSS:
+%%\newcommand\code{\bgroup\@makeother\_\@makeother\~\@makeother\$\@codex}
+%%\def\@codex#1{{\normalfont\ttfamily\hyphenchar\font=-1 #1}\egroup}
+%%\let\code=\texttt
+\let\code=\verb % так оно с нижними подчеркиванием не надо возиться
 \let\proglang=\textsf
 \newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}}
 
