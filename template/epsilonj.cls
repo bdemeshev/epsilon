@@ -1399,6 +1399,10 @@
 
 \def\tagform@#1{\maketag@@@{{\footnotesize\textsf{(#1)}}\@@italiccorr}}
 
+% proglang и pkg яки в JSS
+\let\proglang=\textsf
+\newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}}
+
 \newcommand{\E}{\mathbb{E}}                 % Мат. ожидание
 \newcommand{\e}{\varepsilon}                % эпсилон
 \newcommand{\p}{\partial}                   % частная производная
