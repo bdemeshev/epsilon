@@ -7,6 +7,7 @@
 \addbibresource{../../template/epsilon.bib}
 
 \begin{document}
+\setcounter{page}{6}
 	
 	\begin{frontmatter}
 		\title{Распознавание рукописных цифр}
