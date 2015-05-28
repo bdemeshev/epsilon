@@ -12,17 +12,17 @@ lang: russian
 
 * Андрей Зубанов, [Кто выигрывает рэп-баттлы?](https://github.com/bdemeshev/epsilon/raw/master/e_001/battle/battle.pdf). Статистика даст ответ!
 
-* Саша Кузнецова, [Метод $k$-средних и распознавание рукописных цифр](https://github.com/bdemeshev/epsilon/raw/master/e_001/knn/knn.pdf).
+* Саша Кузнецова, [Метод $k$-средних и распознавание рукописных цифр](https://github.com/bdemeshev/epsilon/raw/master/e_001/knn/knn.pdf). Один из базовых методов кластеризации с кодом R.
 
-* Кирилл Фурманов, [Как выбрать функциональную форму зависимости?](https://github.com/bdemeshev/epsilon/raw/master/e_001/functional-form/functional-form.pdf)
+* Кирилл Фурманов, [Как выбрать функциональную форму уравнения регрессии?](https://github.com/bdemeshev/epsilon/raw/master/e_001/functional-form/functional-form.pdf) Диагностика остатков на графике и с помощью тестов.
 
-* Кирилл Фурманов, Борис Демешев, [Распространённые ошибки в вкр и презентациях](https://github.com/bdemeshev/epsilon/raw/master/e_001/metrics-errors/metrics-errors.pdf)
+* Кирилл Фурманов, Борис Демешев, [Эконометрика: типичные ошибки студентов и аспирантов](https://github.com/bdemeshev/epsilon/raw/master/e_001/metrics-errors/metrics-errors.pdf). Мы знаем, как разозлить и умилостивить комиссию на защите вкр!
 
-* Андрей Костырка, [Подборка вопросов и ответов](https://github.com/bdemeshev/epsilon/raw/master/e_001/qa/qa.pdf) со [stats.stackexchange.com](http://stats.stackexchange.com/)
+* Андрей Костырка, [Новости CrossValidated: выпуск 1](https://github.com/bdemeshev/epsilon/raw/master/e_001/qa/qa.pdf). Отличный обзор новостей со [stats.stackexchange.com](http://stats.stackexchange.com/)
 
-* [QR-коды](https://github.com/bdemeshev/epsilon/raw/master/e_001/qr-code/ar1.pdf). Хочешь научиться расшифровывать QR-код невооруженным глазом?
+* Настя Игнатьева, [QR-код или немного дополненной реальности](https://github.com/bdemeshev/epsilon/raw/master/e_001/qr-code/ar1.pdf). Хочешь научиться расшифровывать QR-код невооруженным глазом?
 
-* Иван Станкевич, [Сезонность](https://github.com/bdemeshev/epsilon/raw/master/e_001/season/seasonal.pdf). Волшебные заклинания X11, X12, X13 для сглаживания сезонности. 
+* Иван Станкевич, [Сгладить, нельзя не сгладить! Пара слов о методах сезонной корректировки](https://github.com/bdemeshev/epsilon/raw/master/e_001/season/seasonal.pdf). Волшебные заклинания X11, X12, X13 для сглаживания сезонности. 
 
 * [Бобры](https://github.com/bdemeshev/epsilon/raw/master/e_001/bobr/bobr.pdf). Бобры умеют сглаживать сезонность!
 
