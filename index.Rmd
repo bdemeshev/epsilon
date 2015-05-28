@@ -8,24 +8,24 @@ lang: russian
 
 * [Эпсилон-1 единым файлом](https://github.com/bdemeshev/epsilon/raw/master/e_001/_whole_journal/e_001_pdfpages.pdf)
 
-* Вступительное слово
+* [Вступительное слово](https://github.com/bdemeshev/epsilon/raw/master/e_001/foreword/foreword.pdf)
 
-* Андрей Зубанов, Кто выигрывает рэп-баттлы?
+* Андрей Зубанов, [Кто выигрывает рэп-баттлы?](https://github.com/bdemeshev/epsilon/raw/master/e_001/battle/battle.pdf). Статистика даст ответ!
 
-* Саша Кузнецова, Метод $k$-средних и распознавание рукописных цифр
+* Саша Кузнецова, [Метод $k$-средних и распознавание рукописных цифр](https://github.com/bdemeshev/epsilon/raw/master/e_001/knn/knn.pdf).
 
-* Кирилл Фурманов, Как выбрать функциональную форму зависимости?
+* Кирилл Фурманов, [Как выбрать функциональную форму зависимости?](https://github.com/bdemeshev/epsilon/raw/master/e_001/functional-form/functional-form.pdf)
 
-* Кирилл Фурманов, Борис Демешев, Распространённые ошибки в вкр и презентациях
+* Кирилл Фурманов, Борис Демешев, [Распространённые ошибки в вкр и презентациях](https://github.com/bdemeshev/epsilon/raw/master/e_001/metrics-errors/metrics-errors.pdf)
 
-* Андрей Костырка, Подборка вопросов и ответов со [stats.stackexchange.com](http://stats.stackexchange.com/)
+* Андрей Костырка, [Подборка вопросов и ответов](https://github.com/bdemeshev/epsilon/raw/master/e_001/qa/qa.pdf) со [stats.stackexchange.com](http://stats.stackexchange.com/)
 
-* QR-коды. Хочешь научиться расшифровывать QR-код невооруженным глазом?
+* [QR-коды](https://github.com/bdemeshev/epsilon/raw/master/e_001/qr-code/ar1.pdf). Хочешь научиться расшифровывать QR-код невооруженным глазом?
 
-* Иван Станкевич, Сезонность. Волшебные заклинания X11, X12, X13 для сглаживания сезонности. 
+* Иван Станкевич, [Сезонность](https://github.com/bdemeshev/epsilon/raw/master/e_001/season/seasonal.pdf). Волшебные заклинания X11, X12, X13 для сглаживания сезонности. 
 
-* Бобры. Бобры умеют сглаживать сезонность!
+* [Бобры](https://github.com/bdemeshev/epsilon/raw/master/e_001/bobr/bobr.pdf). Бобры умеют сглаживать сезонность!
 
-* Интересные задачи. Пять задач по разным темам: от эконометрики до теории игр.
+* [Задачи](https://github.com/bdemeshev/epsilon/raw/master/e_001/problems/problems.pdf). Пять задач по разным темам: от эконометрики до теории игр.
 
-* Стол заказов. Нам нужны новые статьи! Хотите написать?
+* [Стол заказов](https://github.com/bdemeshev/epsilon/raw/master/e_001/stol_zakazov/stol_zakazov_01.pdf). Нам нужны новые статьи! Хотите написать?
