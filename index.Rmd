@@ -16,7 +16,7 @@ lang: russian
 
 * Кирилл Фурманов, [Как выбрать функциональную форму уравнения регрессии?](https://github.com/bdemeshev/epsilon/raw/master/e_001/functional-form/functional-form.pdf) Диагностика остатков на графике и с помощью тестов.
 
-* Кирилл Фурманов, Борис Демешев, [Эконометрика: типичные ошибки студентов и аспирантов](https://github.com/bdemeshev/epsilon/raw/master/e_001/metrics-errors/metrics-errors.pdf). Мы знаем, как разозлить и умилостивить комиссию на защите вкр!
+* Кирилл Фурманов, Борис Демешев, [Эконометрика: типичные ошибки студентов и аспирантов](https://github.com/bdemeshev/epsilon/raw/master/e_001/metrics-errors/metrics-errors.pdf). Мы знаем, как разозлить и умилостивить комиссию на защите ВКР!
 
 * Андрей Костырка, [Новости CrossValidated: выпуск 1](https://github.com/bdemeshev/epsilon/raw/master/e_001/qa/qa.pdf). Отличный обзор новостей со [stats.stackexchange.com](http://stats.stackexchange.com/)
 
