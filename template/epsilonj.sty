@@ -1,0 +1,194 @@
+%%
+%% Стилевой файл, обеспечивающий класс LaTeX2e для журнала
+%% кафедры математической экономики и эконометрики НИУ ВШЭ
+%% «Эпсилон» («Epsilon»)
+%%
+%% Данный стилевой файл распространяется свободно и без ограничений
+%% при условии, что в него не будет вноситься изменений.
+%% Если изменения ПРИСУТСТВУЮТ, то вы должны переименовать этот файл.
+%%
+%%  This work may be distributed and/or modified under the
+%%  conditions of the LaTeX Project Public License, either version 1.3
+%%  of this license or (at your option) any later version.
+%%  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%%  and version 1.3 or later is part of all distributions of LaTeX
+%%  version 2005/12/01 or later.
+%%
+%%  This work has the LPPL maintenance status `maintained'.
+%%
+%%  The Current Maintainer of this work is A. V. Kostyrka.
+%%
+%%  This work consists of the file epsilonj.sty
+%%
+%% Bug fixes and changes:
+%% TeX programming: Andreï V. Kostyrka, HSE, Russia, avkostyrka@edu.hse.ru
+%% Requires Latex2e, ver.2000.06
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{epsilonj}[2014/04/21 by Andre\"{\i} Kostyrka (v. 0.1)]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T2A]{fontenc}
+\RequirePackage[english, russian, KeepShorthandsActive]{babel}
+\RequirePackage[cmex10]{amsmath}
+\RequirePackage{amsfonts,amssymb,amsthm}
+\RequirePackage{xspace}
+\RequirePackage{xcolor}
+\RequirePackage{booktabs}
+\RequirePackage{indentfirst}
+\RequirePackage{microtype}
+\RequirePackage{graphicx}
+\RequirePackage{subfigure}
+\RequirePackage[margin=0pt,font=small,labelfont=bf,labelsep=period]{caption}
+
+\RequirePackage[textwidth=32pc, textheight=48pc]{geometry}
+
+\RequirePackage{enumitem}
+\AddEnumerateCounter{\Asbuk}{\@Asbuk}{\CYRM}
+\AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
+\renewcommand{\labelenumii}{\theenumii)}
+\renewcommand{\theenumii}{\asbuk{enumii}}
+
+
+\RequirePackage{csquotes}
+\DeclareQuoteStyle{russian}
+{\guillemotleft}
+{\guillemotright}
+{\quotedblbase}
+{\textquotedblright}
+
+\RequirePackage[
+  backend=biber,
+  natbib=true,
+  bibstyle=gost-authoryear,
+  citestyle=gost-authoryear,
+  movenames=false,
+  sortlocale=ru_RU,
+  url=false,
+  doi=false,
+  isbn=false,
+  eprint=false,
+  language=auto
+]{biblatex}
+% \addbibresource{epsilon.bib}
+%\usepackage{paratype}
+
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modifications and "add-on" for article.cls starts:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Initiate some info:
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+
+\pagestyle{fancy}
+%\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\newcommand{\fullAUTH}{}
+\newcommand{\runAUTH}{}
+\newcommand{\fullTITL}{}
+\newcommand{\runTITL}{}
+
+\newenvironment{keyword}
+{\textbf{Ключевые слова:}}
+{\unskip.}
+
+\fancyhf{}
+\fancyhead[LE, RO]{\thepage}
+\fancyhead[CE]{\runAUTH}
+\fancyhead[CO]{\runTITL}
+
+\newcommand{\AUTHOR}[2]{\renewcommand{\fullAUTH}{#1} \author{#1\thanks{#2}}}
+\newcommand{\SHORTAU}[1]{\renewcommand{\runAUTH}{#1}}
+\newcommand{\TITLE}[1]{\renewcommand{\fullTITL}{#1} \title{#1}}
+\newcommand{\SHORTTI}[1]{\renewcommand{\runTITL}{#1}}
+
+\fancypagestyle{firststyle}
+{
+   \fancyhf{}
+   \fancyhead[C]{\href{http://economics.hse.ru/depe/econometrics/}{Опубликовано в журнале «Эпсилон»}}
+}
+
+% % % % % % % % % % % % % % % % % % % % % % % User command (AVK)
+
+\def\ellipsiskern{.1em\relax}
+\newcommand{\ldotst}{.\kern\ellipsiskern.\kern\ellipsiskern.} % для . . .
+\newcommand{\ldotse}{!\kern\ellipsiskern.\kern\ellipsiskern.} % для ! . .
+\newcommand{\ldotsq}{?\kern\ellipsiskern\kern-.11em.\kern\ellipsiskern.} % для ? . .
+\newcommand{\fnnsp}{\kern-0.4em\relax}
+
+\def\tagform@#1{\maketag@@@{{\footnotesize\textsf{(#1)}}\@@italiccorr}}
+
+\newcommand{\E}{\mathbb{E}}                 % Мат. ожидание
+\newcommand{\e}{\varepsilon}                % эпсилон
+\newcommand{\p}{\partial}                   % частная производная
+\newcommand{\iu}{{\mkern1mu\mathrm{i}\mkern1mu}} % Мнимая единица
+\newcommand{\ee}{{\mkern1mu\mathrm{e}\mkern1mu}} % Экспонента
+\newcommand{\PP}{\mathbb{P}}                % Вероятность
+\newcommand{\bs}[1]{\boldsymbol{#1}}        % ЖИРНЫЙ последующий символ имени матрицы или векторы
+\renewcommand{\to}{\rightarrow}                   % Правильная стрелка вправо («стремится»)
+\newcommand{\const}{\ensuremath{\text{const}}}        % const прямым начертанием
+\newcommand{\CONST}{\mathbb{C}}
+\newcommand{\assim}{\mathrel{\stackrel{\text{as}}\sim}}
+\newcommand{\iid}{\text{i.\kern1pt i.\kern1pt d.}}
+\renewcommand{\iff}{\hskip.5em plus.1em minus.1em \Leftrightarrow\hskip.5em plus.1em minus.1em\relax}
+\newcommand{\protivor}{\text{\textreferencemark}}
+\providecommand{\hence}{\hskip.5em plus.1em\Rightarrow\hskip.5em plus.1em}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\ddd}{\mathrm{d}}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\simhypo}{\mathrel{\stackrel{\hypo_0}{\sim}}}
+\newcommand{\ofe}[1]{\bigl( \{#1\} \bigr)}
+\DeclareMathOperator{\Corr}{Corr}       % Оператор корреляции
+\DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\Cov}{Cov}         % Оператор ковариации
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\Var}{Var}         % Оператор дисперсии
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\rang}{rank}       % Оператор ранга
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator*{\plim}{plim}      % Оператор предела по вероятности
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\arsh}{arsh}
+
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\Studt}{\mathsf{t}}
+\newcommand{\Fish}{\mathsf{F}}
+\newcommand{\DF}{\ensuremath{\mathsf{DF}}}
+\newcommand{\DW}{\ensuremath{\mathsf{DW}}}
+\newcommand{\WN}{\ensuremath{\mathsf{WN}}}
+\newcommand{\hypo}{\mathcal{H}}
+\newcommand{\ARMA}[2]{\ensuremath{\text{ARMA}(#1; #2)}}
+\newcommand{\ARCH}[1]{\ensuremath{\text{ARCH}(#1)}}
+\newcommand{\GARCH}[2]{\ensuremath{\text{GARCH}(#1; #2)}}
+\newcommand{\ARIMA}[3]{\ensuremath{\text{ARIMA}(#1; #2 ; #3)}}
+\newcommand{\AR}[1]{\ensuremath{\text{AR}(#1)}}
+\newcommand{\MA}[1]{\ensuremath{\text{MA}(#1)}}
+\newcommand{\VAR}[1]{\ensuremath{\text{VAR}(#1)}}
+\newcommand{\pval}{\ensuremath{p_{\text{val}}}}
+
+\newcommand{\ENGs}[1]{\foreignlanguage{english}{#1}}
+
+\newcommand{\primred}[1]{{\color{red} \textit{Прим. ред.}\quad #1}}
+
+% % % % % Собственный стиль
+
+\raggedbottom
+\righthyphenmin=2
+\let\myfootnote\footnote
+\renewcommand{\footnote}[1]{\myfootnote{\;#1}}
+\setlength{\parindent}{1.5em}
+\numberwithin{equation}{section}
+
+\hyphenation{ап-про-к-си-ми-ро-вать}
+
+\endinput
+%%
+%% End of file `epsilonj.sty'.
