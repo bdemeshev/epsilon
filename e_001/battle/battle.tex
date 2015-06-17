@@ -1,4 +1,6 @@
-\documentclass[final,pdftex]{../../template/epsilonj}
+\documentclass[10pt, twoside]{article}
+
+\input{../../template/epsilonj.sty}
 
 \RequirePackage{graphicx}
 \RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
@@ -7,34 +9,25 @@
 
 \begin{document}
 
-\setcounter{page}{3}
+\TITLE{Кто выигрывает рэп-баттлы?}
+\SHORTTI{Кто выигрывает рэп-баттлы?}
 
-% \microtypesetup{protrusion=false, expansion=false}
-\begin{frontmatter}
-\title{Кто выигрывает рэп-баттлы?}
-\runtitle{Кто выигрывает рэп-баттлы?}
+\AUTHOR{Андрей Зубанов}{НИУ ВШЭ, Москва.}
+\SHORTAU{Зубанов А.}
 
-\begin{aug}
-\author{\imya{Андрей} \fam{Зубанов}}%
+\thispagestyle{firststyle}
 
-\runauthor{Зубанов А.}
-
-\address{НИУ ВШЭ, Москва.}
-\end{aug}
+\maketitle
 
 \begin{abstract}
-	Статистика является мощным инструментом при изучении не только экономических и~социальных, но и~культурных явлений. Даже простые статистические методы могут оказаться полезными при изучении таких событий, как различные соревнования, телешоу, прослушивания.
+Статистика является мощным инструментом при изучении не только экономических и~социальных, но и~культурных явлений. Даже простые статистические методы могут оказаться полезными при изучении таких событий, как различные соревнования, телешоу, прослушивания.
 \end{abstract}
 
 \begin{keyword}
-	\kwd{рэп}
-	\kwd{баттл}
-	\kwd{жеребьёвка}
+рэп, баттл, жеребьёвка
 \end{keyword}
 
-\end{frontmatter}
 
-% \microtypesetup{protrusion=true, expansion=true}
 
 \section{Влияние позиции участника на результат}
 
@@ -121,7 +114,6 @@ z_{\text{расч}}=\frac{|18/28-1/2|\sqrt{28}}{\sqrt{18/28 \cdot (1-18/28)}}=3{
 \begin{center}
 		\includegraphics[width=2cm]{versus.jpg}
 \end{center}
-
 
 
 \end{document}

@@ -13,32 +13,22 @@
 
 \begin{document}
 
-% \microtypesetup{protrusion=false, expansion=false}
+
 \begin{frontmatter}
-\title{Образец статьи: новый подход к вёрстке русскоязычных журналов\protect\thanksref{T1}}
+\title{Образец статьи: новый подход к вёрстке русскоязычных журналов}
 \runtitle{Новый подход к вёрстке русскоязычных журналов}
-\thankstext{T1}{Ссылка к заголовку от команды thankstext.}
+
 
 \begin{aug}
-\author{\imya{Первоксандр} \fam{Авторов}\thanksref{t1,t2}\ead[label=e1]{elektronnaya@pochta.ru}}%
-\author{\imya{Втордимир} \fam{Авторский}\thanksref{t3}\ead[label=e2]{adres@pisem.net}}%
-\author{\imya{Третьексей} \fam{Авторчук}
-\ead[label=e3]{third@somewhere.com}
-\ead[label=u1,url]{www.gde-to.ru}}
+\author{\imya{Первоксандр} \fam{Авторов}}%
+\author{\imya{Втордимир} \fam{Авторский}}%
+\author{\imya{Третьексей} \fam{Авторчук}}
 
-\thankstext{t1}{Какой-то комментарий}
-\thankstext{t2}{Первый сотрудник проекта}
-\thankstext{t3}{Второй сотрудник проекта}
 \runauthor{П. В. Авторов и др.}
 
-\address{Адрес первого и второго автора,
-как правило, в пару строк\\
-\printead{e1,e2}}
+\address{Адрес первого и второго автора, как правило, в пару строк}
 
-\address{Адрес третьего автора,
-как правило, в пару строк,
-обычно в одну-две\\
-\printead{e3,u1}}
+\address{Адрес третьего автора, как правило, в пару строк}
 \end{aug}
 
 \begin{abstract}
@@ -343,6 +333,16 @@ and denote it by
 \end{equation}
 
 Ссылки внутри документа: формуда to the formula \ref{eq:path} в приложении Appendix \ref{pril}.
+
+\section{Параметры документа}
+
+\begin{center}
+	\begin{tabular}{ll}
+		Ширина текста & \the\textwidth \\
+		Высота текста & \the\textheight \\
+	\end{tabular}
+\end{center}
+
 
 \section*{Благодарности}
 В этом разделе мы выражаем благодарности. Он не нумеруется и не добавляется в оглавление "--- для этого используется команда \verb"\section*". Большое спасибо Vytas Statulevicius, VTeX, Lithuania и Эконометрическому обществу США за идеи для данного стилевого файла, а также за оперативную поддержку.
