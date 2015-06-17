@@ -10,3 +10,4 @@
 Размер шрифта таблиц: \footnotesize
 Номера уравнений: \footnotesize\textsf{#1}
 Листинги программ: \footnotesize
+
