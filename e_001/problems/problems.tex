@@ -1,47 +1,33 @@
-\documentclass[final,pdftex]{../../template/epsilonj}
+\documentclass[11pt]{article}
 
+\usepackage{epsilonj}
 \RequirePackage{graphicx}
 \RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 
 \addbibresource{../../template/epsilon.bib}
-
-\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \theoremstyle{definition} % definition/plain/remark
 \newtheorem{zadacha}{Задача}
 
 
 \begin{document}
-\setcounter{page}{57}
 
-% \microtypesetup{protrusion=false, expansion=false}
-\begin{frontmatter}
-\title{Задачи}
-\runtitle{Задачи}
+\TITLE{Задачи}
+\SHORTTITLE{Задачи}
 
-\begin{aug}
-\author{\imya{Фольклор и коллектив кафедры} } % \fam{Демешев}}%
+\AUTHOR{Фольклор и коллектив кафедры}{}
+\SHORTAUTHOR{Фольклор и коллектив кафедры}
 
-%\runauthor{Борис Демешев}
+\DoFirstPageTechnicalStuff
 
-%\address{НИУ ВШЭ, Москва.}
-\end{aug}
 
 \begin{abstract}
 Прикольные задачи по теории вероятностей, теории игр, динамической оптимизации, а заодно и здравому смыслу!
 \end{abstract}
 
 \begin{keyword}
-	\kwd{взрыв мозга}
-	\kwd{только хардкор}
-	\kwd{слабо}
+взрыв мозга, только хардкор, слабо
 \end{keyword}
-
-\end{frontmatter}
-
-% \microtypesetup{protrusion=true, expansion=true}
-
-%\section{Поехали}
 
 
 \begin{zadacha}
@@ -53,10 +39,10 @@
 \end{zadacha}
 
 \begin{zadacha}
-Удав-Пустынник любит программировать на \proglang{python} и есть французские багеты\footnote{<<Удав из которого говорит кролик, это не тот удав, который нам нужен>>. (\cite{iskander:kroliki})}. Длина французского багета равна 1 метру. За один заглот Удав-Пустынник заглатывает кусок случайной длины равномерно распределенной на отрезке $[0;1]$. Для того, чтобы съесть весь багет удаву потребуется случайное количество $N$ заглотов. 
+Удав-Пустынник любит программировать на \proglang{python} и есть французские багеты\footnote{«Удав из которого говорит кролик, "--- это не тот удав, который нам нужен». \citep{iskander:kroliki}}. Длина французского багета равна 1 метру. За один заглот Удав-Пустынник заглатывает кусок случайной длины равномерно распределенной на отрезке $[0;1]$. Для того, чтобы съесть весь багет удаву потребуется случайное количество $N$ заглотов. 
 \begin{enumerate}
 \item Найдите $\E(N)$ и $\Var(N)$
-\item Как поменяются ответы, если багет имеет длину 2 метра?
+\item Как поменяются ответы, если багет имеет длину 2~метра?
 \end{enumerate}
 \end{zadacha}
 

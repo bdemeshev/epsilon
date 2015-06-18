@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{pdfpages}
+
+\newcommand{\epsilonpdf}[1]{\includepdf[pages=-]{#1/#1.pdf}}
+
+\begin{document}
+
+\epsilonpdf{cover}
+\epsilonpdf{foreword}
+\epsilonpdf{battle} 
+\epsilonpdf{knn} 
+\epsilonpdf{functional-form} 
+\epsilonpdf{metrics-errors} 
+\epsilonpdf{qa} 
+\epsilonpdf{qr-code} 
+\epsilonpdf{season} 
+\epsilonpdf{problems} 
+\epsilonpdf{stol_zakazov} 
+
+\end{document}
+
+[pages=-,noautoscale=true]
+
+
+
+
+
+
+
+
+
+\documentclass{combine}
+
+\usepackage{epsilonj}
+
+\begin{document}
+
+\pagestyle{combine}
+
+\tableofcontents
+
+\clearpage
+
+\section{Editor's introduction} \label{intro}
+
+In the article by A.~N.~Author on page~\pageref{art1} ...
+\begin{papers}
+\coltoctitle{An article}
+\coltocauthor{A.~N.~Author}
+\label{art1}
+\import{battle/battle}
+\coltoctitle{Another article}
+\coltocauthor{A.~N.~Other}
+\label{art2}
+\import{bobr/bobr}
+\end{papers} % end of individual articles/papers
+%\clearpage
+%\section{Acknowledgements} % into main ToC (section 2)
+Among the many ...
+\end{document}
+

@@ -1,4 +1,3 @@
-%%
 %% Стилевой файл, обеспечивающий класс LaTeX2e для журнала
 %% кафедры математической экономики и эконометрики НИУ ВШЭ
 %% «Эпсилон» («Epsilon»)
@@ -29,7 +28,7 @@
 \ProvidesPackage{epsilonj}[2014/04/21 by Andre\"{\i} Kostyrka (v. 0.1)]
 
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[T2A]{fontenc}
+\RequirePackage[X2,T2A]{fontenc}
 \RequirePackage[english, russian, KeepShorthandsActive]{babel}
 \RequirePackage[cmex10]{amsmath}
 \RequirePackage{amsfonts,amssymb,amsthm}
@@ -41,10 +40,13 @@
 \RequirePackage{graphicx}
 \RequirePackage{subfigure}
 \RequirePackage[margin=0pt,font=small,labelfont=bf,labelsep=period]{caption}
+\RequirePackage{titling}
+\RequirePackage{ifthen} % For checking ifx with empty commands
 
 \RequirePackage[textwidth=32pc, textheight=48pc]{geometry}
 
 \RequirePackage{enumitem}
+\setlist{itemsep=0ex plus.1ex, parsep=0ex plus.1ex, topsep=.7ex plus.2ex minus.15ex, partopsep=.7ex plus.2ex minus.15ex}
 \AddEnumerateCounter{\Asbuk}{\@Asbuk}{\CYRM}
 \AddEnumerateCounter{\asbuk}{\@asbuk}{\cyrm}
 \renewcommand{\labelenumii}{\theenumii)}
@@ -79,6 +81,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Modifications and "add-on" for article.cls starts:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Initiate some info:
+
 \usepackage{fancyhdr}
 \setlength{\headheight}{15.2pt}
 
@@ -99,15 +102,43 @@
 \fancyhead[CE]{\runAUTH}
 \fancyhead[CO]{\runTITL}
 
-\newcommand{\AUTHOR}[2]{\renewcommand{\fullAUTH}{#1} \author{#1\thanks{#2}}}
-\newcommand{\SHORTAU}[1]{\renewcommand{\runAUTH}{#1}}
+\newcommand{\AUTHOR}[2]{%
+	\ifx&#1&%
+	\renewcommand{\fullAUTH}{#1} \author{}%
+    \else%
+	    \ifx&#2&%
+		\renewcommand{\fullAUTH}{#1} \author{#1}%
+		\fi%
+	\renewcommand{\fullAUTH}{#1} \author{#1\thanks{#2}}%
+    \fi%
+}
+\newcommand{\SHORTAUTHOR}[1]{\renewcommand{\runAUTH}{#1}}
 \newcommand{\TITLE}[1]{\renewcommand{\fullTITL}{#1} \title{#1}}
-\newcommand{\SHORTTI}[1]{\renewcommand{\runTITL}{#1}}
+\newcommand{\SHORTTITLE}[1]{\renewcommand{\runTITL}{#1}}
 
 \fancypagestyle{firststyle}
 {
    \fancyhf{}
    \fancyhead[C]{\href{http://economics.hse.ru/depe/econometrics/}{Опубликовано в журнале «Эпсилон»}}
+}
+
+\newcommand{\DoFirstPageTechnicalStuff}{%
+	\newread\inputstream
+	\openin\inputstream=0pagecount.txt
+	\read\inputstream to \PageCount
+	\closein\inputstream
+	\setcounter{page}{\PageCount}%
+	\thispagestyle{firststyle}%
+	\maketitle%
+	}
+	
+\newcommand{\DoFirstPageSimple}{%
+	\newread\inputstream
+	\openin\inputstream=0pagecount.txt
+	\read\inputstream to \PageCount
+	\closein\inputstream
+	\setcounter{page}{\PageCount}%
+	\thispagestyle{firststyle}%
 }
 
 % % % % % % % % % % % % % % % % % % % % % % % User command (AVK)
@@ -157,7 +188,6 @@
 \DeclareMathOperator{\trace}{tr}
 \DeclareMathOperator{\arsh}{arsh}
 
-
 \renewcommand{\phi}{\varphi}
 \newcommand{\Studt}{\mathsf{t}}
 \newcommand{\Fish}{\mathsf{F}}
@@ -178,6 +208,19 @@
 
 \newcommand{\primred}[1]{{\color{red} \textit{Прим. ред.}\quad #1}}
 
+\newcommand{\proglang}[1]{\textsf{#1}}
+\newcommand{\pkg}[1]{\textbf{#1}}
+\newcommand{\code}{\verb}
+
+\DeclareUnicodeCharacter{0406}{{\fontencoding{X2}\selectfont\CYRII}} % И ДЕС.
+\DeclareUnicodeCharacter{0456}{{\fontencoding{X2}\selectfont\cyrii}} % и дес.
+\DeclareUnicodeCharacter{0462}{{\fontencoding{X2}\selectfont\CYRYAT}} % ЯТЬ
+\DeclareUnicodeCharacter{0463}{{\fontencoding{X2}\selectfont\cyryat}} % ять
+\DeclareUnicodeCharacter{0472}{{\fontencoding{X2}\selectfont\CYROTLD}} % ФИТА
+\DeclareUnicodeCharacter{0473}{{\fontencoding{X2}\selectfont\cyrotld}} % фита
+\DeclareUnicodeCharacter{0474}{{\fontencoding{X2}\selectfont\CYRIZH}} % ИЖИЦА
+\DeclareUnicodeCharacter{0475}{{\fontencoding{X2}\selectfont\cyrizh}} % ижица
+
 % % % % % Собственный стиль
 
 \raggedbottom
@@ -186,6 +229,12 @@
 \renewcommand{\footnote}[1]{\myfootnote{\;#1}}
 \setlength{\parindent}{1.5em}
 \numberwithin{equation}{section}
+
+\renewcommand{\thesubfigure}{\thefigure.\arabic{subfigure}}
+\makeatletter
+\renewcommand{\p@subfigure}{}
+\renewcommand{\@thesubfigure}{\textbf{Рис. \thesubfigure.\hskip\subfiglabelskip}}
+\makeatother
 
 \hyphenation{ап-про-к-си-ми-ро-вать}
 

@@ -1,4 +1,4 @@
-\documentclass[final,pdftex]{../../template/epsilonj}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -49,6 +49,8 @@
 
 \usepackage{alltt}
 
+\usepackage{epsilonj}
+
 \RequirePackage{graphicx}
 \usepackage{verbatim}
 \RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
@@ -56,39 +58,28 @@
 \addbibresource{../../template/epsilon.bib}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-\setcounter{page}{6}
 	
-	\begin{frontmatter}
-		\title{Метод $k$-средних и распознавание рукописных цифр}
-		\runtitle{Метод $k$-средних и распознавание рукописных цифр}
+\TITLE{Метод $k$-средних и распознавание рукописных цифр}
+\SHORTTITLE{Метод $k$-средних и распознавание рукописных цифр}
+\AUTHOR{Александра Кузнецова}{НИУ ВШЭ, Москва.}
+\SHORTAUTHOR{Александра Кузнецова}
+
+\DoFirstPageTechnicalStuff
 		
-		\begin{aug}
-			\author{\imya{Саша} \fam{Кузнецова}}%
-			
-			\runauthor{Саша~Кузнецова}
-			
-			\address{НИУ ВШЭ, Москва.}
-		\end{aug}
+\begin{abstract}
+Задача распознавания рукописного текста "--- одна из классических задач машинного обучения, к~решению которой применялось такое количество алгоритмов, что она успешно может быть использована в~качестве учебной. 
 		
-		\begin{abstract}
-		Задача распознавания рукописного текста "--- одна из классических задач машинного обучения, к~решению которой применялось такое количество алгоритмов, что она успешно может быть использована в~качестве учебной. 
+В~этой заметке мы будем учиться распознавать написанные от руки цифры.
+\end{abstract}
 		
-		В~этой заметке мы будем учиться распознавать написанные от руки цифры.
-		\end{abstract}
-		
-		\begin{keyword}
-			\kwd{k ближайших соседей}
-			\kwd{R}
-			\kwd{машинное обучение}
-			\kwd{распознавание образов}
-		\end{keyword}
-		
-	\end{frontmatter}
+\begin{keyword}
+k ближайших соседей, R, машинное обучение, распознавание образов
+\end{keyword}
 	
 		
 Мы обратимся к~одному из наиболее известных хранилищ, в~котором собраны обработанные изображения цифр, разберём, как эти данные оттуда извлекать, а~затем применим к~ним алгоритм $k$ ближайших соседей, используя \proglang{R}.
 	
-	\section{База данных MNIST}
+\section{База данных MNIST}
 	
 Источником данных нам послужит база «MNIST» (\cite{mnistdigits}), \url{http://yann.lecun.com/exdb/mnist/}, в~которой хранятся 70\,000 изображений цифр, написанных несколькими сотнями разных людей. 
 Каждая картинка в~этой базе обработана так, чтобы поместиться в~квадратик размером $28\times28$ пикселей. 
@@ -303,51 +294,28 @@
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(RWeka)}
+\end{alltt}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in library(RWeka): there is no package called 'RWeka'}}\begin{alltt}
 \hlstd{train_weka} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(train_labels, train)}
 \hlstd{train_weka[,}\hlnum{1}\hlstd{]} \hlkwb{<-} \hlkwd{as.factor}\hlstd{(train_weka[,}\hlnum{1}\hlstd{])}
 \hlstd{classifier} \hlkwb{<-} \hlkwd{IBk}\hlstd{(train_labels}\hlopt{~}\hlstd{.,} \hlkwc{data} \hlstd{= train_weka,}
                   \hlkwc{control} \hlstd{=} \hlkwd{Weka_control}\hlstd{(}\hlkwc{K} \hlstd{=} \hlnum{10}\hlstd{,} \hlkwc{X}\hlstd{=}\hlnum{TRUE}\hlstd{))}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): could not find function "{}IBk"{}}}\begin{alltt}
 \hlstd{classifier}
 \end{alltt}
-\begin{verbatim}
-## IB1 instance-based classifier
-## using 1 nearest neighbour(s) for classification
-\end{verbatim}
-\begin{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'classifier' not found}}\begin{alltt}
 \hlkwd{evaluate_Weka_classifier}\hlstd{(classifier,} \hlkwc{numFolds} \hlstd{=} \hlnum{5}\hlstd{)}
 \end{alltt}
-\begin{verbatim}
-## === 5 Fold Cross Validation ===
-## 
-## === Summary ===
-## 
-## Correctly Classified Instances         870               87      %
-## Incorrectly Classified Instances       130               13      %
-## Kappa statistic                          0.8553
-## Mean absolute error                      0.0279
-## Root mean squared error                  0.1603
-## Relative absolute error                 15.5158 %
-## Root relative squared error             53.4558 %
-## Coverage of cases (0.95 level)          87      %
-## Mean rel. region size (0.95 level)      10      %
-## Total Number of Instances             1000     
-## 
-## === Confusion Matrix ===
-## 
-##    a   b   c   d   e   f   g   h   i   j   <-- classified as
-##   92   0   0   0   0   0   4   0   0   1 |   a = 0
-##    0 113   1   1   0   0   0   1   0   0 |   b = 1
-##    2   6  79   1   0   1   1   5   2   2 |   c = 2
-##    0   1   3  82   0   4   1   1   0   1 |   d = 3
-##    0   3   0   0  87   0   3   1   0  11 |   e = 4
-##    0   2   1   4   0  78   3   1   1   2 |   f = 5
-##    2   3   0   0   0   0  88   0   1   0 |   g = 6
-##    0   5   1   0   2   2   0 102   1   4 |   h = 7
-##    0   3   4   2   2   6   1   0  67   2 |   i = 8
-##    1   1   0   0   8   3   1   4   0  82 |   j = 9
-\end{verbatim}
-\end{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): could not find function "{}evaluate\_Weka\_classifier"{}}}\end{kframe}
 \end{knitrout}
 
 Теперь предскажем значения для тестовой выборки с~помощью функции \code|predict| и~посмотрим на долю ошибок.
@@ -359,12 +327,19 @@
 \hlkwd{names}\hlstd{(test_weka)} \hlkwb{=} \hlkwd{names}\hlstd{(train_weka)[}\hlopt{-}\hlnum{1}\hlstd{]}
 
 \hlstd{predictions} \hlkwb{<-} \hlkwd{predict}\hlstd{(classifier,} \hlkwc{newdata} \hlstd{= test_weka)}
+\end{alltt}
 
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in predict(classifier, newdata = test\_weka): object 'classifier' not found}}\begin{alltt}
 \hlstd{errors} \hlkwb{<-} \hlstd{(}\hlkwd{sum}\hlstd{(predictions} \hlopt{!=} \hlstd{test_labels))}\hlopt{/}\hlstd{m}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'predictions' not found}}\begin{alltt}
 \hlstd{errors}
 \end{alltt}
 \begin{verbatim}
-## [1] 0.174
+## [1] 0.2
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
