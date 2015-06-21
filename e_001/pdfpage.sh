@@ -1,9 +1,9 @@
 #!/bin/bash
-ARTICLES="battle
-knn
-functional-form
-fun
+ARTICLES="functional-form
 metrics-errors
+knn
+battle
+fun
 qa
 qr-code
 season
