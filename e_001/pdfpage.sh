@@ -1,6 +1,13 @@
 #!/bin/bash
 
-# именно в этом порядке статьи будут идти в журнале:
+# именно в этом порядке будут вычисляться номера страниц
+# этот порядок должен совпадать с порядком в e_00n.pdf
+
+# "статьи" без номеров страниц внизу
+ARTICLESWN="cover
+foreword"
+
+# статьи с номерами страниц внизу
 ARTICLES="functional-form
 metrics-errors
 knn
@@ -12,17 +19,21 @@ season
 problems
 stol_zakazov"
 
-# не забудем откомпилировать обложку
-cd cover
-pdflatex -interaction batchmode cover
-pdflatex -interaction batchmode  cover
-biber cover
-pdflatex -interaction batchmode cover
-pdflatex -interaction batchmode cover
+# не забудем откомпилировать статьи без номеров страниц:
+for i in $ARTICLESWN
+do
+cd $i
+pdflatex -interaction batchmode $i
+pdflatex -interaction batchmode $i
+biber $i
+pdflatex -interaction batchmode $i
+pdflatex -interaction batchmode $i
 cd ../
+done
 
 
-CUM=3 # стартовая страница для новой статьи (сейчас для первой)
+
+CUM=3 # стартовая страница для новой статьи (сейчас для первой нумеруемой)
 for i in $ARTICLES
 do
 cd $i
