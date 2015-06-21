@@ -28,3 +28,11 @@ e_001/knn/knn-concordance.tex
 e_001/knn/knn-concordance.tex
 
 e_001/knn/figure/unnamed-chunk-4-1.pdf
+
+e_001/knn/t10k-images.idx3-ubyte
+
+e_001/knn/t10k-labels.idx1-ubyte
+
+e_001/knn/train-images.idx3-ubyte
+
+e_001/knn/train-labels.idx1-ubyte
