@@ -11,6 +11,17 @@ qr-code
 season
 problems
 stol_zakazov"
+
+# не забудем откомпилировать обложку
+cd cover
+pdflatex -interaction batchmode cover
+pdflatex -interaction batchmode  cover
+biber cover
+pdflatex -interaction batchmode cover
+pdflatex -interaction batchmode cover
+cd ../
+
+
 CUM=3 # стартовая страница для новой статьи (сейчас для первой)
 for i in $ARTICLES
 do
