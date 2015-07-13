@@ -1,0 +1,16 @@
+
+*.aux
+
+*.bcf
+
+*.blg
+
+*.log
+
+*.out
+
+*.bbl
+
+*.gz
+
+*.xml
