@@ -29,10 +29,10 @@ lang: russian
 
 * Настя Игнатьева, [QR-код или немного дополненной реальности](https://github.com/bdemeshev/epsilon/raw/master/e_001/qr-code/ar1.pdf). Хочешь научиться расшифровывать QR-код невооруженным глазом?
 
-* Иван Станкевич, [Сгладить, нельзя не сгладить! Пара слов о методах сезонной корректировки](https://github.com/bdemeshev/epsilon/raw/master/e_001/season/seasonal.pdf). Волшебные заклинания X11, X12, X13 для сглаживания сезонности. 
+* Иван Станкевич, [Сгладить, нельзя не сгладить! Пара слов о методах сезонной корректировки](https://github.com/bdemeshev/epsilon/raw/master/e_001/season/season.pdf). Волшебные заклинания X11, X12, X13 для сглаживания сезонности. 
 
 * [Бобры](https://github.com/bdemeshev/epsilon/raw/master/e_001/bobr/bobr.pdf). Бобры умеют сглаживать сезонность!
 
 * [Задачи](https://github.com/bdemeshev/epsilon/raw/master/e_001/problems/problems.pdf). Пять задач по разным темам: от эконометрики до теории игр.
 
-* [Стол заказов](https://github.com/bdemeshev/epsilon/raw/master/e_001/stol_zakazov/stol_zakazov_01.pdf). Нам нужны новые статьи! Хотите написать?
+* [Стол заказов](https://github.com/bdemeshev/epsilon/raw/master/e_001/stol_zakazov/stol_zakazov.pdf). Нам нужны новые статьи! Хотите написать?
