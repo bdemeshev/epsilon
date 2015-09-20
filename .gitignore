@@ -36,3 +36,7 @@ e_001/knn/t10k-labels.idx1-ubyte
 e_001/knn/train-images.idx3-ubyte
 
 e_001/knn/train-labels.idx1-ubyte
+
+e_002/princess/princess.fdb_latexmk
+
+e_002/princess/princess.fls
