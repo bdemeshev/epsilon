@@ -4,7 +4,8 @@ output: html_document
 lang: russian
 ---
 
-* [github-репозиторий журнала Эпсилон](https://github.com/bdemeshev/epsilon/)
+* Инструкция для авторов и [github-репозиторий журнала Эпсилон](https://github.com/bdemeshev/epsilon/)
+
 
 
 ### Эпсилон-2, Ведутся строительные работы
