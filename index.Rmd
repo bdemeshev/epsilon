@@ -7,7 +7,7 @@ lang: russian
 * Инструкция для авторов и [github-репозиторий журнала Эпсилон](https://github.com/bdemeshev/epsilon/)
 
 
-
+<!--   
 ### Эпсилон-2, Ведутся строительные работы
 
 * [Эпсилон-2 бета версия](https://github.com/bdemeshev/epsilon/raw/master/e_002/e_002.pdf)
@@ -16,7 +16,7 @@ lang: russian
 * Борис Демешев, [Доказательство от принцессы](https://github.com/bdemeshev/epsilon/raw/master/e_002/princess/princess.pdf)
 * Артём Филатов, [Задачи по линейной алгебре из ШАДа](https://github.com/bdemeshev/epsilon/raw/master/e_002/linal_shad/linal_shad.pdf)
 * Кирилл Фурманов, [Важность коэффициентов](https://github.com/bdemeshev/epsilon/raw/master/e_002/reg_importance/reg_importance.pdf)
-
+-->
 
 
 ### Эпсилон-1, май 2015
