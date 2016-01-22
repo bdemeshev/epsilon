@@ -1,22 +1,38 @@
 \documentclass{article}
 \usepackage{pdfpages}
 
-\newcommand{\epsilonpdf}[1]{\includepdf[pages=-]{#1/#1.pdf}}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\newcommand{\epsilonpdf}[2]{\includepdf[pages=-,
+addtotoc={1, section, 1, #2, p:#1}]{#1/#1.pdf}}
+% синтаксис:
+% \epsilonpdf{название файла}{название в оглавлении}
+% запятая в названии запрещена пока что 
+
+\newcommand{\epsiloncover}[1]{\includepdf[pages=-]{#1/#1.pdf}}
+
+
 
 \begin{document}
 
-\epsilonpdf{cover}
-\epsilonpdf{foreword}
-\epsilonpdf{functional-form} 
-\epsilonpdf{metrics-errors} 
-\epsilonpdf{knn} 
-\epsilonpdf{battle} 
-\epsilonpdf{fun} 
-\epsilonpdf{qa} 
-\epsilonpdf{qr-code} 
-\epsilonpdf{season} 
-\epsilonpdf{problems} 
-\epsilonpdf{stol_zakazov} 
+\epsiloncover{cover}
+
+\thispagestyle{empty}
+\tableofcontents
+
+\epsilonpdf{foreword}{Вступительное слово}
+\epsilonpdf{functional-form}{Кирилл Фурманов «Как выбрать функциональную форму уравнения регрессии?»}
+\epsilonpdf{metrics-errors}{Кирилл Фурманов; Борис Демешев  «Эконометрика: типичные ошибки студентов и аспирантов» }
+\epsilonpdf{knn}{Саша Кузнецова «Метод k-средних и распознавание рукописных цифр»}
+\epsilonpdf{battle}{Андрей Зубанов «Кто выигрывает рэп-баттлы?»}
+\epsilonpdf{fun}{Весёлый уголок: Гальтон и ПДД}
+\epsilonpdf{qa}{Андрей Костырка «Новости CrossValidated: выпуск 1»}
+\epsilonpdf{qr-code}{Настя Игнатьева «QR-код или немного дополненной реальности»} 
+\epsilonpdf{season}{Иван Станкевич «Пара слов о методах сезонной корректировки»}
+\epsilonpdf{problems}{Пять задачек}
+\epsilonpdf{stol_zakazov}{Стол заказов}
+\epsilonpdf{last_page}{Над номером работали}
 
 \end{document}
 
