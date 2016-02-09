@@ -31,7 +31,7 @@ lang: russian
 
 * Кирилл Фурманов, Борис Демешев, [Эконометрика: типичные ошибки студентов и аспирантов](https://github.com/bdemeshev/epsilon/raw/master/e_001/metrics-errors/metrics-errors.pdf). Мы знаем, как разозлить и умилостивить комиссию на защите ВКР!
 
-* Саша Кузнецова, [Метод $k$-средних и распознавание рукописных цифр](https://github.com/bdemeshev/epsilon/raw/master/e_001/knn/knn.pdf). Один из базовых методов кластеризации с кодом R.
+* Саша Кузнецова, [Метод $k$ ближайших соседей и распознавание рукописных цифр](https://github.com/bdemeshev/epsilon/raw/master/e_001/knn/knn.pdf). Один из базовых методов кластеризации с кодом R.
 
 * Андрей Зубанов, [Кто выигрывает рэп-баттлы?](https://github.com/bdemeshev/epsilon/raw/master/e_001/battle/battle.pdf). Статистика даст ответ!
 
