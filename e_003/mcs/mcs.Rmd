@@ -93,7 +93,7 @@ forecasts <- cbind(m1, m2, m3)
 n_models <- ncol(forecasts)
 actual <- matrix(rep(true_y, n_models), ncol = n_models)
 
-loss <- (actual - forecasts) ^ 2
+loss <- (actual - forecasts) ^ 2 
 best_models <- MCSprocedure(loss)
 ```
 
