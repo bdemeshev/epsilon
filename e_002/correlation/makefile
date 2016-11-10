@@ -20,5 +20,4 @@ $(file_name).tex : $(file_name).Rnw
 
 clean:
 	-latexmk -C
-	-rm $(file_name).pdf
-	-rm $(file_name).tex
+	-rm $(file_name).pdf $(file_name).tex $(file_name).aux $(file_name).bcf $(file_name).blg $(file_name).fdb_latexmk $(file_name).fls $(file_name).log $(file_name).out 
