@@ -526,6 +526,9 @@ $X_1=1$ & $0$ & $0.2$ \\
 \end{theorem}
 
 
+Прикольный пример. $X \sim U[0;1]$. При фиксированном $X$ величины $Y$ и $Z$ условно независимы и одинаково распределены $Y|X \sim U[0; X]$ и $Z|X \sim U[0;X]$. В данном случае условная корреляция $\Corr(Y,Z | X) = 0$, однако $\pCorr(Y, Z | X) \neq 0$. Или $[0;X^2]$?
+
+
 \section{Случай равных дисперсий}
 
 
@@ -654,6 +657,8 @@ X_i = \gamma_{i1} X_1 + \gamma_{i2} X_2 + \ldots + \gamma_{in} X_n + u_i
 \pCorr(X_i, X_j | ... ) = -\frac{\Cov(X_i^*, X_j^*)}{\sqrt{\Var(X_i^*)\Var(X_j^*)}} = -\frac{\beta_{ij}}{\sqrt{\beta_{ii}\beta_{jj}}}= -\frac{C^{-1}_{ij}}{\sqrt{C^{-1}_{ii}C^{-1}_{jj}}}
 \]
 
+Почему не срабатывает при $i=j$?
+
 
 здесь геометрическое доказательство разных знаков!!!
 
@@ -743,6 +748,12 @@ tsdisplay(y)
 
 
 \url{https://www.hse.ru/data/2016/02/15/1140408320/WP2_2016_01_F.pdf}
+
+\url{http://www.ewi.tudelft.nl/fileadmin/Faculteit/EWI/Over_de_faculteit/Afdelingen/Applied_Mathematics/Risico_en_Beslissings_Analyse/Theses/MWawrzyniak_thesis.pdf}
+
+\url{http://www.ewi.tudelft.nl/fileadmin/Faculteit/EWI/Over_de_faculteit/Afdelingen/Applied_Mathematics/Risico_en_Beslissings_Analyse/Theses/MWawrzyniak_thesis.pdf}
+
+\url{http://iroha.scitech.lib.keio.ac.jp:8080/sigma/bitstream/handle/10721/1899/document.pdf?sequence=4}
 
 \section{Выборочные характеристики}
 
