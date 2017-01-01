@@ -2,6 +2,7 @@
 
 \usepackage{epsilonj}
 
+\usepackage{epigraph}
 \usepackage{tikz}
 \usepackage{bbm}
 \usetikzlibrary{calc,intersections,decorations.pathreplacing}
@@ -74,9 +75,12 @@
 
 % Люди часто хотят найти простое решение сложной задачи.
 
-Everything Should Be Made as Simple as Possible, But Not Simpler. Roger Sessions, paraphrase of Albert Einstein.
+\epigraph{Everything Should Be Made as Simple as Possible, But Not Simpler.}{\textit{Roger Sessions, \\ paraphrase of Albert Einstein}}
+ 
 
-There is always a well-known solution to every human problem — neat, plausible, and wrong. Henry Louis Mencken.
+\epigraph{There is always a well-known solution to every human problem — neat, plausible, and wrong.}{\textit{Henry Louis Mencken}}
+ 
+ 
 
 
 Почему при болезни мы измеряем температуру тела? По всей видимости важны два факта:
@@ -159,7 +163,7 @@ X_1=\beta_{12} \cdot X_2 + u
 
 Здесь $\beta_{12}$ показывает на сколько единиц в среднем растёт $X_1$ при росте $X_2$ на одну единицу.
 
-Естественно, мы хотим, чтобы с ростом $X_2$ величина $\varepsilon$ в среднем не менялась, то есть хотим нулевую «силу зависимости» между ними, $\Cov(X_2, u)=0$.
+Естественно, мы хотим, чтобы с ростом $X_2$ величина $u$ в среднем не менялась, то есть хотим нулевую «силу зависимости» между ними, $\Cov(X_2, u)=0$.
 
 
 \[
@@ -387,7 +391,7 @@ $\E(Y|X)=\E(Y)$ & $\Corr(f(X),Y)=0$ для всех $f()$ \\
 
 Для нахождения стандартизованного коэффициента множественной регрессии используется разложение
 \[
-\frac{Y}{\sigma_Y}=\rho_{XY|Z} \cdot \frac{X}{\sigma_X} + \rho_{YZ|X} \frac{Z}{\sigma_Z} + \varepsilon
+\frac{Y}{\sigma_Y}=\rho_{XY;Z} \cdot \frac{X}{\sigma_X} + \rho_{YZ;X} \frac{Z}{\sigma_Z} + u
 \]
 
 Два подхода к определению стандартизованного коэффициента регрессии эквивалентны в силу теоремы Фриша-Во-Ловелла (Frisch–Waugh–Lovell). Обычно эта теорема формулируется применительно к регрессии, а здесь мы приведём её вариат для случайных величин.
@@ -786,7 +790,7 @@ A^{-1} =
 
 Стандартизованный коэффициент при $X_j$ в регрессии $X_i$ на остальные иксы равен:
 \[
-\hat\mu_{ij}^{st} = -\frac{A_{ij}}{A_{ii}}
+\beta_{ij}^{st} = -\frac{A_{ij}}{A_{ii}}
 \]
 
 Квадрат коэффициента множественной корреляции $X_i$ с остальными иксами равен:
