@@ -1,0 +1,103 @@
+\documentclass[10pt]{article}
+
+\usepackage{epsilonj}
+
+\usepackage{epigraph}
+\usepackage{tikz}
+\usepackage{bbm}
+\usetikzlibrary{calc, intersections, decorations.pathreplacing}
+\usetikzlibrary{arrows.meta, through, backgrounds}
+
+\usepackage{tikz-3dplot}
+
+% этот код считает отмечает углы в tikz
+\newcommand\markangle[6]{% origin X Y radius radiusmark mark
+  % fill red circle
+  \begin{scope}
+    \path[clip] (#1) -- (#2) -- (#3);
+    \fill[color=red,fill opacity=0.5,draw=red,name path=circle]
+    (#1) circle (#4);
+  \end{scope}
+  % middle calculation
+  \path[name path=line one] (#1) -- (#2);
+  \path[name path=line two] (#1) -- (#3);
+  \path[%
+  name intersections={of=line one and circle, by={inter one}},
+  name intersections={of=line two and circle, by={inter two}}
+  ] (inter one) -- (inter two) coordinate[pos=.5] (middle);
+  % put mark
+  \node at ($(#1)!#5!(middle)$) {#6};
+}
+
+\RequirePackage{graphicx}
+\RequirePackage[colorlinks, citecolor=blue, urlcolor=blue]{hyperref}
+
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\II}{\mathbbm{1}}
+\def \hb{\hat{\beta}}
+\DeclareMathOperator{\pCorr}{pCorr}
+\DeclareMathOperator{\canCorr}{canCorr}
+\DeclareMathOperator{\pCov}{pCov}
+\DeclareMathOperator{\pVar}{pVar}
+\DeclareMathOperator{\sCov}{sCov}
+\DeclareMathOperator{\sVar}{sVar}
+\DeclareMathOperator{\Dep}{Dep}
+\DeclareMathOperator{\Lin}{Lin}
+\renewcommand{\P}{\mathbb{P}}
+
+
+\begin{document}
+
+\TITLE{Теорема Фриша-Во-Ловелла}
+\SHORTTITLE{Теорема Фриша-Во-Ловелла}
+
+\AUTHOR{Борис Демешев}{НИУ ВШЭ, Москва.}
+\SHORTAUTHOR{Борис Демешев}
+
+\DoFirstPageTechnicalStuff
+
+
+\newtheorem{theorem}{Теорема}
+\newtheorem{definition}{Определение}
+
+
+\begin{abstract}
+Теорема Фриша-Во-Ловелла и её роль в русской революции.
+\end{abstract}
+
+\begin{keyword}
+Теорема Фриша-Во-Ловелла, геометрическое доказательство.
+\end{keyword}
+
+\section{Геометрическое доказательство}
+
+Рисуем вектора $x$, $y$ и $z$.
+
+
+
+
+
+Рассмотрим подробнее картинку на плоскости:
+
+\begin{tikzpicture}
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at (10, 0);
+  \coordinate (C) at (2, 10);
+  \coordinate (D) at (6, 7);
+  \draw [-{Stealth[length=5mm]}] (A) -- (B);
+  \draw [-{Stealth[length=5mm]}] (A) -- (C);
+  \draw [-{Stealth[length=5mm]}] (A) -- (D);
+  \draw [-{Stealth[length=5mm]}] ($(A)!(B)!(C)$) -- (B);
+  \draw [-{Stealth[length=5mm]}] ($(A)!(D)!(C)$) -- (D);
+  
+\end{tikzpicture}
+
+
+\section{Матрицы к бою!}
+
+
+
+
+
+\end{document}
