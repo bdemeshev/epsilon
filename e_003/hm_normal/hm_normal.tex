@@ -1,0 +1,200 @@
+\documentclass[11pt,russian,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmainfont[]{Linux Libertine O}
+    \setsansfont[]{Linux Libertine O}
+    \setmonofont[Mapping=tex-ansi]{Linux Libertine O}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Хершел-Максвелл и нормальное распределение},
+            pdfauthor={Винни-Пух},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=russian]{babel}
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[]{russian}
+\fi
+\usepackage[style=alphabetic]{biblatex}
+
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Хершел-Максвелл и нормальное распределение}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Винни-Пух}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2017-12-01}
+
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+\newfontfamily{\cyrillicfont}{Linux Libertine O}
+\newfontfamily{\cyrillicfontsf}{Linux Libertine O}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}ar}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\subsection{Молекулы газа}\label{-}
+
+В замкнутом загончике на плоскости хаотично движутся молекулы газа. Мы
+ловим одну из них случайно и измеряем вектор скоростей \[
+V = \begin{pmatrix}
+V_x \\
+V_y \\
+\end{pmatrix}.
+\]
+
+Максвелл предположил, что
+
+М1. Если мы повернём нашу картинку на произвольный угол и повторим
+измерения, то закон распределения нового вектора \(V'\) будет совпадать
+с законом распределения вектора \(V\).
+
+М2. Если мы знаем горизонтальную составляющую скорости, то это не даёт
+нам никакой информации о вертикальной составляющей, то есть случайные
+величины \(V_x\) и \(V_y\) независимы.
+
+Заметим, что единицы измерения скорости мы можем выбираться произвольно,
+поэтому давайте дополним предположения Максвелла предположением
+
+М3. Единицы измерения скорости выбраны так, что \(\Var(V_x)=1\).
+
+\subsection{Первый поворот}\label{-}
+
+Помимо горизонтальной и вертикальной составлящих вектора скорости,
+\(V_x\) и \(V_y\), рассмотрим ещё две величины, \(U\) --- угол с
+горизонтальной осью и \(R=\sqrt{V_x^2+V_y^2}\) --- скалярную скорость,
+длину вектора скорости.
+
+Естественно, \(V_x = R\cos U\), \(V_y = R\sin U\).
+
+\begin{itemize}
+\tightlist
+\item
+  Какой вектор получится, если вектор \(V\) повернуть на \(90^{\circ}\)
+  против часовой стрелки?
+\end{itemize}
+
+Получится вектор \[
+V'=\begin{pmatrix}
+-V_y \\
+V_x \\
+\end{pmatrix}
+\]
+
+По предпосылке М1 вектор \(V'\) должен иметь такое же распределение, как
+вектор \(V\).
+
+\begin{itemize}
+\tightlist
+\item
+  Чему равны \(\E(V_x)\), \(\E(V_y)\), \(\Var(V_y)\)?
+\end{itemize}
+
+Раз уж \(V' \sim V\), то \(-V_y \sim V_x\) и \(V_x \sim V_y\). Значит
+\(\E(-V_y) = \E(V_x)\), и одновременно \(\E(V_x) = \E(V_y)\). Это
+возможно только в случае \(\E(V_x) = \E(V_y) = 0\).
+
+Строго говоря, осталась ещё возможность, что математическое ожидание не
+существует.
+
+Аналогично, \(\Var(V_x) = \Var(V_y)\) и по предпосылке М3
+\(\Var(V_x) = \Var(V_y) = 1\).
+
+\begin{itemize}
+\tightlist
+\item
+  Как распределена величина \(U\)?
+\end{itemize}
+
+Заметим, что при повороте на произвольный угол \(\alpha\), этот угол
+прибавляется к величине \(U\). Если при этом сумма выйдет за \(2\pi\),
+то нужно ещё и вычесть \(2\pi\). По предпосылке М1 функция плотности
+\(U\) может быть только постоянной, \(f(u+\alpha)=f(u)\) при
+\(0\leq u +\alpha < 2\pi\).
+
+Значит \(U\) распределена равномерно на \([0;2\pi)\) и её функция
+плотности равна \[
+f(u) = \begin{cases}
+\frac{1}{2\pi}, \text{ если } u \in [0;2\pi) \\
+0, \text{ иначе} \\
+\end{cases}
+\]
+
+\printbibliography
+
+
+\end{document}
