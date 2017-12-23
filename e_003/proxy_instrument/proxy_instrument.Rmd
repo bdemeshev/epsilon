@@ -1,0 +1,77 @@
+---
+title: "Ура!"
+author: "Винни-Пух :)"
+date: "10/9/2017"
+output:
+  pdf_document:
+    toc: false
+    toc_depth: 2
+    keep_tex: yes
+    number_sections: true
+    fig_width: 4
+    fig_height: 3
+    fig_caption: true
+    highlight: tango
+    latex_engine: xelatex
+  word_document: default
+  html_document: default
+lang: ru-RU
+mainfont: Arial
+fontsize: 11pt
+geometry: left=2cm, right=2cm, top=2cm, bottom=2cm
+documentclass: article
+linkcolor: blue
+urlcolor: blue
+citecolor: blue
+header-includes:
+- \newfontfamily{\cyrillicfonttt}{Arial}
+- \newfontfamily{\cyrillicfont}{Arial}
+- \newfontfamily{\cyrillicfontsf}{Arial}
+editor_options: 
+  chunk_output_type: console
+---
+
+Истинная зависимость имеет вид
+\[
+y_i = \beta_1 + \beta_x x_i + \beta_w w_i + u_i
+\]
+
+Ошибка $u_i$ некоррелирована с регрессорами $x_i$ и $w_i$. 
+
+Проблема в том, что $w_i$ не наблюдаемы.
+
+Оценить $\beta_w$ мы не надеемся! Мы думаем, есть ли возможность оценить состоятельно хотя бы $\beta_x$.
+
+
+
+
+Есть два способа!
+
+Способ 1. Раздобыли $proxy$ для $w$. Требования к прокси-переменной.
+
+Для удобства записи требований временно предположим, что мы разложили пропущенную переменную на ту часть, которая связана с прокси, и часть, некоррелированную с прокси:
+
+\[
+w_i = \delta_1 + \delta_p proxy_i + \nu_i
+\]
+
+
+1. Прокси коррелированна с пропущенной переменной, $Cov(proxy_i, w_i) \neq 0$ или $\delta_p \neq 0$.
+
+1. Ошибка $u_i$ некоррелирована с прокси $proxy_i$ 
+
+1. Ошибка $\nu_i$ некоррелирована с прокси $proxy_i$ и $x_i$.
+
+
+Использование прокси переменной. Строим банальную регрессию $y_i$ на константу, $x_i$ и $proxy_i$. При этом $\hat\beta_x$ состоятельная для $\beta_x$, а $\hat\beta_1$ не состоятельна для $\beta_1$ и $\hat\beta_{proxy}$ несостоятельная для $\beta_w$.
+
+Способ 2. Раздобыли инструмент $inst$ для $x$. Требования к инструментальной переменной.
+
+1. Инструментальная переменная коррелирована с включенным регрессором, $Cov(inst, x) \neq 0$.
+
+1. Инструментальная переменная некоррелирована с хвостиком $\beta_w w_i + u_i$, $Cov(inst, \beta_w w_i + u_i)=0$.
+
+Использование инструментальной переменной. Двухшаговый МНК. Строим регрессию $x$ на константу и $inst$. Получаем $\hat x$. Строим регрессию $y$ на константу и $\hat x$. При этом $\hat\beta_x$ состоятельная для $\beta_x$.
+
+
+

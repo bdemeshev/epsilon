@@ -1,0 +1,162 @@
+\documentclass[11pt,russian,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmainfont[]{Arial}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{unicode=true,
+            pdftitle={Ура!},
+            pdfauthor={Винни-Пух :)},
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue,
+            urlcolor=blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=russian]{babel}
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[]{russian}
+\fi
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Ура!}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Винни-Пух :)}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{10/9/2017}
+
+\newfontfamily{\cyrillicfonttt}{Arial}
+\newfontfamily{\cyrillicfont}{Arial}
+\newfontfamily{\cyrillicfontsf}{Arial}
+
+\begin{document}
+\maketitle
+
+Истинная зависимость имеет вид \[
+y_i = \beta_1 + \beta_x x_i + \beta_w w_i + u_i
+\]
+
+Ошибка \(u_i\) некоррелирована с регрессорами \(x_i\) и \(w_i\).
+
+Проблема в том, что \(w_i\) не наблюдаемы.
+
+Оценить \(\beta_w\) мы не надеемся! Мы думаем, есть ли возможность
+оценить состоятельно хотя бы \(\beta_x\).
+
+Есть два способа!
+
+Способ 1. Раздобыли \(proxy\) для \(w\). Требования к прокси-переменной.
+
+Для удобства записи требований временно предположим, что мы разложили
+пропущенную переменную на ту часть, которая связана с прокси, и часть,
+некоррелированную с прокси:
+
+\[
+w_i = \delta_1 + \delta_p proxy_i + \nu_i
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Прокси коррелированна с пропущенной переменной,
+  \(Cov(proxy_i, w_i) \neq 0\) или \(\delta_p \neq 0\).
+\item
+  Ошибка \(u_i\) некоррелирована с прокси \(proxy_i\)
+\item
+  Ошибка \(\nu_i\) некоррелирована с прокси \(proxy_i\) и \(x_i\).
+\end{enumerate}
+
+Использование прокси переменной. Строим банальную регрессию \(y_i\) на
+константу, \(x_i\) и \(proxy_i\). При этом \(\hat\beta_x\) состоятельная
+для \(\beta_x\), а \(\hat\beta_1\) не состоятельна для \(\beta_1\) и
+\(\hat\beta_{proxy}\) несостоятельная для \(\beta_w\).
+
+Способ 2. Раздобыли инструмент \(inst\) для \(x\). Требования к
+инструментальной переменной.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Инструментальная переменная коррелирована с включенным регрессором,
+  \(Cov(inst, x) \neq 0\).
+\item
+  Инструментальная переменная некоррелирована с хвостиком
+  \(\beta_w w_i + u_i\), \(Cov(inst, \beta_w w_i + u_i)=0\).
+\end{enumerate}
+
+Использование инструментальной переменной. Двухшаговый МНК. Строим
+регрессию \(x\) на константу и \(inst\). Получаем \(\hat x\). Строим
+регрессию \(y\) на константу и \(\hat x\). При этом \(\hat\beta_x\)
+состоятельная для \(\beta_x\).
+
+
+\end{document}
