@@ -1,0 +1,614 @@
+\documentclass[11pt,russian,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmainfont[]{Linux Libertine O}
+    \setsansfont[]{Linux Libertine O}
+    \setmonofont[Mapping=tex-ansi]{Linux Libertine O}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Геометрия хи-квадрат распределения},
+            pdfauthor={Винни-Пух},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=russian]{babel}
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[]{russian}
+\fi
+\usepackage[style=alphabetic]{biblatex}
+
+\addbibresource{chi-squared.bib}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Геометрия хи-квадрат распределения}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Винни-Пух}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2018-01-02}
+
+\usepackage{bbm}
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+\newfontfamily{\cyrillicfont}{Linux Libertine O}
+\newfontfamily{\cyrillicfontsf}{Linux Libertine O}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\Rn}{\RR^n}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\Lin}{\mathcal{L}in}
+\newcommand{\Linp}{\Lin^{\perp}}
+\newcommand{\col}{\mathcal{col}}
+\newcommand{\colp}{\col^{\perp}}
+\newcommand{\sVar}{s\mathbb{V}ar}
+\newcommand{\Var}{\mathbb{V}ar}
+\newcommand{\Cov}{\mathbb{C}ov}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\col}{\mathrm{col}}
+\newcommand{\trace}{\mathrm{trace}}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\subsection{Пространства и подпространства}\label{--}
+
+Если говорить совсем просто, то пространство \(\Rn\) --- это все
+столбики, состоящие из \(n\) действительных чисел. А если вспоминать
+определение, то линейное пространство --- это такой набор векторов, в
+котором:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Разрешено складывать два любых вектора и результат остаётся внутри
+  набора;
+\item
+  Разрешено умножать любой вектор на любое число и результат остаётся
+  внитри набора;
+\item
+  Сложение векторов и умножение вектора на число согласованы между
+  собой.
+\end{enumerate}
+
+Подпространство --- это часть набора, которая сама по себе является
+пространством. Есть два популярных способа описать подпространство
+внутри \(\Rn\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Линейная оболочка некоторого набора векторов.
+\end{enumerate}
+
+Например, внутри \(\RR^{3}\) есть два вектора \(x = (1, 1, 1)\) и
+\(y = (1, 0, 0)\) и подпространство \(V\), образованное ими \[
+V = \Lin (x, y),
+\] то есть это все вектора вида \(\alpha x + \beta y\), где \(\alpha\) и
+\(\beta\) --- произвольные числа.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Ортогональное дополнение к набору векторов.
+\end{enumerate}
+
+Например, внутри \(\RR^{3}\) есть два вектора \(x = (1, 1, 1)\) и
+\(y = (1, 0, 0)\) и подпространство \(W\) всех векторов,
+перпендикулярным им обоим \[
+W = \Linp (x, y).
+\]
+
+Напомним, два вектора \(a\) и \(b\) в пространстве \(\Rn\)
+перпендикулярны, если их скалярное произведение \(\langle a, b \rangle\)
+равно нулю. Поэтому подпространство \(W\) можно также описать системой
+уравнений.
+
+Подпространство \(W\) состоит из всех векторов \(w=(w_1, w_2, w_3)\),
+удовлетворяющих системе:
+
+\[
+\begin{cases}
+w_1 \cdot 1 + w_2 \cdot 1 + w_3 \cdot 1 = 0 \\
+w_1 \cdot 1 + w_2 \cdot 0 + w_3 \cdot 0 = 0 \\
+\end{cases}
+\]
+
+Если вектора \(a_1\), \ldots, \(a_k\) линейно независимы и лежат внутри
+\(\Rn\), то размерности описанных нами подпространств равны
+
+\[
+\dim \Lin(a_1, \ldots, a_k) = k
+\]
+
+\[
+\dim \Linp(a_1, \ldots, a_k) =  n - k
+\]
+
+\paragraph{Упражнения}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Лежит ли вектор \ldots{} в подпространстве \ldots{}
+\item
+  Найдите базис в ортогональном дополнении подпространства \ldots{}
+\item
+  Найдите размерность пространств \ldots{} \ldots{}
+\end{enumerate}
+
+\subsection{Проекции}
+
+Проекцией вектора \(a\) на подпространство \(L\) называется вектор
+\(\hat a\), лежащий в \(L\) и ближайший к \(a\).
+
+Есть два популярных способа найти проекцию:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Решить задачу минимизации расстояния \[
+  \min_{\hat a\in L} ||a - \hat a||
+  \]
+\item
+  Потребовать, чтобы разница \(a-\hat a\) была перпендикулярна любому
+  вектору из \(L\): \[
+  a- \hat a \in L^{\perp}
+  \]
+\end{enumerate}
+
+\paragraph{Упражнения:}\label{-1}
+
+\begin{itemize}
+\item
+  Спроецируйте вектор \(z\) на подпространство \ldots{} Найдите квадрат
+  длины проекции.
+\item
+  Спроецируйте вектор \(z\) на прямую, порождённую вектором \(b\).
+  Найдите косинус угла между \(a\) и \(b\).
+\item
+  Спроецируйте вектор \(z\) на ортогональное дополнение к \ldots{}
+\item
+  Спроецируйте вектор \(z\) на вектор единичной длины \(v\).
+\item
+  Спроецируете произвольный вектор \(z\) на пространство \(\Linp(v)\),
+  где \(v\) --- вектор единичной длины. Найдите квадрат длины проекции.
+\end{itemize}
+
+\subsection{Хи-квадрат распределение}\label{--}
+
+Определение. Пусть компоненты \(n\)-мерного вектора \(z\) имеют
+стандартное нормальное распределение, \(z_i \sim \cN(0;1)\) и
+независимы. Рассмотрим произвольное фиксированное \(k\)-мерное
+подпространство \(L\). Абсолютно любое. Обозначим проекцию вектора \(z\)
+на подпространство \(L\) буквой \(\hat z\), а квадрат длины проекции ---
+буквой \(Q\):
+
+\[
+Q = ||\hat z||^2 = \langle \hat z, \hat z\rangle = \hat z'\hat z
+\]
+
+Закон распределения случайной величины \(Q\) называется хи-квадрат
+распределением с \(k\)-степенями свободы.
+
+Пример. Вектор \(z \in R^3\), компоненты \(z_i \sim \cN(0;1)\) и
+независимы. Найдите явную формулу для величины \(Q\), квадрата длины
+проекции \(z\) на плоскость \(z_1 + z_2 + z_3 =0\). Какое распределение
+имеет \(Q\)?
+
+Пример. Вектор \(z \in R^3\), компоненты \(z_i \sim \cN(0;1)\) и
+независимы. Найдите явную формулу для величины \(Q\), квадрата длины
+проекции \(z\) на плоскость прямую, порожденную вектором
+\(a = (1, 1, 1)\). Какое распределение имеет \(Q\)?
+
+Пример. Вектор \(z \in R^7\), компоненты \(z_i \sim \cN(0;1)\) и
+независимы. Какое распределение имеет величина \(Q\), квадрат длины
+проекции \(z\) на подпространство, задаваемое системой уравнений \[
+\begin{cases}
+z_1 + z_2 + z_3 +z_4 + z_5 +z_6 + z_7 = 0 \\
+z_1 + 2z_2 +3z_3 +4z_4 +5z_5+6z_6+7z_7 =0 \\
+\end{cases}
+\]
+
+Пример. Вектор \(z \in R^4\), компоненты \(z_i \sim \cN(7;1)\) и
+независимы. Какое распределение имеет величина \(Q\), квадрат длины
+проекции \(z\) на подпространство, ортогональное прямой, порождаемой
+вектором \(a=(1, 1, 1, 1)\)?
+
+Сразу скажем, что этот подход не нов. Например, он обсуждается в статье
+\textcite{cobb2011teaching}. Однако аккуратного изложения его на русском
+я не знаю :)
+
+\subsection{Связь со стандартным определением}\label{---}
+
+Если взять практически любой учебник, то там будет дано другое
+определение \(\chi^2\)-распределения.
+
+Величина \(Q\) имеет \(\chi^2\)-распределение с \(k\) степенями свободы,
+если она представима в виде \[
+Q = z_1^2 + z_2^2 + \ldots + z_k^2,
+\] где \(z_i\) независимы и стандартны нормальны, \(z_i \sim \cN(0;1)\).
+
+Сначала заметим, что стандартное определение из учебника --- частный
+случай нашего. Что получится если вектор
+\(z = (z_1, z_2, \ldots, z_n)\), лежащий в \(\Rn\), спроецировать на
+\(k\)-мерное подпространство \(V\) всех векторов, у которых первые \(k\)
+координат произвольные, а остальные --- нули?
+
+Получится вектор \(\hat z = (z_1, z_2, \ldots, z_k, 0, 0, \ldots, 0)\).
+И квадрат длины проекции будет равен \[
+Q = ||\hat z||^2 = z_1^2 + z_2^2 + \ldots + z_k^2.
+\]
+
+А наше новое определение допускает проецирование на любое \(k\)-мерное
+подпространство :)
+
+Возникает естественный вопрос, а вдруг, если спроецировать на какое-то
+хитрое подпространство, скажем \(\Lin(a, b, c) \cap \Linp (d, e, f)\),
+эквивалентность определений нарушится?
+
+Вдруг возможно, что квадрат длины проекции вектора \(z\) на
+подпространство размерности \(k\) не будет представляться в виде суммы
+\(k\) независимых стандартных нормальных величин?
+
+Оказывается два определения полностью эквивалентны в силу двух фактов:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Закон распределения вектора \(z\) не изменится, если вектор \(z\)
+  повернуть в любом направлении на произвольный угол;
+\item
+  Любое \(k\)-мерное подпространство всегда можно повернуть так, чтобы
+  оно совпало с подпространством \(V\) всех векторов, у которых первые
+  \(k\) координат произвольные, а остальные --- нули.
+\end{enumerate}
+
+Идеи доказательства:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Функция плотности \(z\) имеет вид: \[
+  f(z_1, z_2, \ldots, z_n) = f(z_1) \cdot f(z_2)\cdot \ldots \cdot f(z_n) \propto e^{-z_1^2/2}e^{-z_2^2/2}\ldots e^{-z_1^2/2} = e^{-\frac{1}{2}(z_1^2 + z_2^2 +\ldots +z_n^2)};
+  \]
+\end{enumerate}
+
+Мы видим, что значение функции плотности в произвольной точке \(z\)
+зависит только от расстояния от \(z\) до нуля, но не от угла.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Рассмотрим стандартный базис \(e_1\), \(e_2\), \ldots, \(e_n\) в
+  \(\Rn\). Рассмотрим \(k\)-мерное подпространство \(V \subset \Rn\).
+  Выберем в подпространстве \(V\) произвольный ортогональный базис из
+  \(k\) векторов: \(v_1\), \ldots, \(v_k\). Сначала повернём \(V\) так,
+  чтобы \(v_1\) совпал с \(e_1\). Затем будем поворачивать так, чтобы
+  \(v_1\) не трогать, а \(v_2\) повернуть до совпадения с \(e_2\). И так
+  далее.
+\end{enumerate}
+
+\subsection{Определение в матрицах}\label{--}
+
+Зафиксируем \(k\) линейно-независимых векторов \(x_1\), \(x_2\), \ldots,
+\(x_k\). Для удобства занесём их столбцами в матрицу \(X\). То есть
+\(x_j\) --- это \(j\)-ый столбец матрицы \(X\). Введём два обозначения.
+
+Линейная оболочка всех столбцов матрицы \(X\): \[
+\col X = \Lin(x_1, x_2, \ldots, x_k)
+\]
+
+Ортогональное дополнение всех столбцов матрицы \(X\): \[
+\colp X = \Linp(x_1, x_2, \ldots, x_k)
+\]
+
+Проецирование на линейное пространство \(\col X\) можно задать в виде
+умножения на матрицу \(H=X(X'X)^{-1}X'\).
+
+У матрицы-шляпницы \(H\) много приятных свойств. Например, необходимое и
+достаточное условие, чтобы некая матрица \(H\) задавала проецирование:
+
+\[
+\begin{cases}
+H' = H \\
+H^2 = H \\
+\end{cases}
+\]
+
+Другое необходимое и достаточное условие:
+
+\[
+\begin{cases}
+H' = H \\
+\text{Все собственные числа } H { равны } 0 { или } 1\\
+\end{cases}
+\]
+
+Если спроецировать нормальный стандартный вектор \(z\) на \(\col X\), то
+мы получим вектор \(\hat z = Hz\). И квадрат длины \(\hat z\) будет
+равен \[
+||\hat z ||^2 = (Hz)'Hz=z'H'Hz = z'Hz
+\]
+
+Поэтому можно дать определение:
+
+Величина \(Q\) имеет хи-квадрат распределение с \(k\) степенями свободы,
+если она представима в виде \[
+Q = z'Hz,
+\] где \(z\) --- нормальные стандартный вектор, а \(H\) --- матрица,
+проецирующая на \(k\)-мерное подпространство, то есть \(H'=H\),
+\(H^2=H\), \(\trace H = k\).
+
+По сути это определение просто переводит на язык матриц идею
+проецирования. И скорее скрывает её, чем поясняет :)
+
+Проецирование на линейное пространство \(\colp X\) можно задать в виде
+умножения на матрицу \(M = I - H\). Поэтому квадрат длины проекции
+стандартного нормального вектора \(z\) на подпространство \(\colp X\)
+записывается как \[
+S = ||Mz||^2 = (Mz)'Mz=z'M'Mz=z'(I-H)z
+\]
+
+И, конечно, величина \(S\) имеет хи-квадрат распределение с \(n-k\)
+степенями свободы.
+
+\subsection{Выборочная дисперсия --- геометрия}\label{--}
+
+Начнём с упражнения. Пусть \(z\) --- вектор из \(\Rn\), а \(\1\) ---
+вектор из единиц. Чему равен квадрат длины проекции \(z\) на
+\(\Linp(\1)\)? Чему равна проекция вектора \(\1\) на \(\Linp(\1)\)?
+
+Сначала спроецируем вектор \(z\) на \(\Lin(\1)\). Получаем вектор
+\(\bar z \cdot \1 = (\bar z, \bar z, \ldots, \bar z)\). Поэтому проекция
+\(z\) на \(\Linp(\1)\) равна
+\(z - \bar z \cdot \1 = (z_1 - \bar z, z_2 - \bar z, \ldots, z_n - \bar z)\).
+
+Вектор из единиц ортогонален пространству \(\Linp(\1)\), поэтому вектор
+\(\1\) проецируется в нулевой вектор.
+
+Поэтому для стандартного нормального вектора \(z\) величина
+\(\sum (z_i - \bar z)^2\) имеет хи-квадрат распределение с \(n-1\)-ой
+степенью свободы.
+
+А теперь замечаем, что выборочная дисперсия вектора \(x\) --- это
+квадрат длины проекции делённый на размерность подпространства!
+
+\[
+\sVar(x) = \frac{\sum_{i=1}^n (x_i - \bar x)^2}{n-1} = \frac{1}{n-1}\cdot ||x - \bar x \cdot \1||^2
+\]
+
+Осталось добавить предположения:
+
+Пусть \(x_i\) независимы и одинаково распределены
+\(\cN(\mu, \sigma^2)\). Заметим, что вектор \(x\) можно представить в
+виде \[
+x = \mu \cdot 1 + \sigma z,
+\] где \(z\) --- стандартный нормальный вектор.
+
+Проекция \(x\) на \(\Linp(\1)\) совпадает с проекцией \(\sigma z\) на
+\(\Linp(\1)\). Вектор \(\1\) проецируется в нулевой. А проекция
+\(\sigma z\) в \(\sigma\) раз длиннее, чем проекция \(z\). Поэтому: \[
+\sum (x_i - \bar x)^2 = \sigma^2 \sum_{i=1}^n (z_i - \bar z)^2
+\]
+
+Таким образом, мы доказали, что \[
+\frac{\sum (x_i - \bar x)^2}{\sigma^2} = \frac{(n-1)\sVar(x)}{\sigma^2} \sim \chi^2_{n-1}
+\]
+
+\subsection{Ковариационная матрица спроецированного вектора}\label{---}
+
+Тут хорошо бы максимально просто доказать, что если \(\hat z = Hz\), и
+\(z\) --- стандартный нормальный вектор, то \(\Var(\hat z) = H\).
+
+\subsection{Хи-квадрат тест Пирсона, геометрия}\label{----}
+
+Для начала спроецируем стандартный нормальный вектор \(z\) на
+\(\Linp(v)\), где \(v\) --- единичный вектор. При этом мы получим вектор
+\(\hat z = H \cdot z\):
+
+\[
+\hat z = (I - vv')\cdot z
+\]
+
+По нашем определению квадрат длины \(\hat z\) имеет хи-квадрат
+распределение со степенями свободы равными размерности подпространства
+\(\Linp(v)\). А размерность пространства \(\Linp(v)\) на единицу меньше
+размерности исходного пространства.
+
+Ковариационная матрица вектора \(\hat z\) имеет аналогичный вид: \[
+\Var(\hat z) = (I - vv')
+\]
+
+Запомним эту ковариационную матрицу! И запомним, что она возникает у
+проекции на ортогональное дополнение к вектору \(v\)! А теперь к
+покемонам!
+
+Каждый отловленный покемон может быть одного из \(r\) видов. Виды
+покемонов встречаются с вероятностью \(p_1\), \ldots, \(p_{r}\). Всего
+мы ловим \(n\) покемонов, \(\nu_j\) --- количество покемонов вида \(j\).
+
+Замечаем, что \(\nu_j\) имеет биномиальное распределение
+\(Bin(n, p_j)\). В частности, \(\E(\nu_j) = np_j\) и
+\(\Var(\nu_j)=n p_j (1- p_j)\). Также можно установить, что \[
+\Cov(\nu_j, \nu_i) = -np_ip_j
+\]
+
+Мы немного необычным образом отнормируем эти \(\nu_j\): вычтем
+математическое ожидание и поделим на корень из математического ожидания!
+
+\[
+\nu_j^* = \frac{\nu_j - np_j}{\sqrt{np_j}}
+\]
+
+При этом окажется, что: \(\E(\nu_j^*) = 0\),
+\(\Var(\nu_j^*) = 1 - p_j\),
+\(\Cov(\nu_i, \nu_i) = - \sqrt{p_i}\sqrt{p_j}\).
+
+Заметим, что по центральное предельной теореме
+\(\nu_j^* \to \cN(0; 1 - p_j)\).
+
+Присмотримся повнимательнее!
+
+\[
+\Var(\nu^*) = \begin{pmatrix}
+1 - p_1 & -\sqrt{p_1}\sqrt{p_2} & -\sqrt{p_1}\sqrt{p_3} & \ldots \\
+-\sqrt{p_2}\sqrt{p_1} & 1 - p_2 & -\sqrt{p_2}\sqrt{p_3} & \ldots \\
+-\sqrt{p_3}\sqrt{p_1} & -\sqrt{p_3}\sqrt{p_2} & 1 - p_3  & \ldots \\
+\vdots & \vdots & \vdots &  \\
+\end{pmatrix} = 
+\begin{pmatrix}
+1 & 0 & 0 & \ldots \\
+0 & 1 & 0 & \ldots \\
+0 & 0 & 1 & \ldots \\
+\vdots & \vdots & \vdots &  \\
+\end{pmatrix} - \begin{pmatrix}
+\sqrt{p_1}\sqrt{p_1} & \sqrt{p_1}\sqrt{p_2} & \sqrt{p_1}\sqrt{p_3} & \ldots \\
+\sqrt{p_2}\sqrt{p_1} & \sqrt{p_2}\sqrt{p_2} & \sqrt{p_2}\sqrt{p_3} & \ldots \\
+\sqrt{p_3}\sqrt{p_1} & \sqrt{p_3}\sqrt{p_2} & \sqrt{p_3}\sqrt{p_3}  & \ldots \\
+\vdots & \vdots & \vdots &  \\
+\end{pmatrix}
+\]
+
+Выходит, что ковариационная матрица нового вектора \(\nu^*\) представима
+в виде:
+
+\[
+\Var(\nu^*) = I - vv',
+\] где вектор \(v\) состоит из корней вероятностей,
+\(v= (\sqrt{p_1}, \sqrt{p_2}, \ldots, \sqrt{p_r})\). Заметим, что вектор
+\(v\) имеет единичную длину:
+
+\[
+||v||^2 = v_1^2 + v_2^2 + \ldots + v_r^2 = p_1 + p_2 + \ldots + p_r = 1
+\]
+
+То есть ковариационная матрица вектора \(\nu^*\) совпадает с
+ковариационной матрицой проекции вектора \(z\) из \(\RR^r\) на
+подпространство \(\Linp(v)\). Закон распределения многомерного
+нормального вектора однозначно определяется вектором математических
+ожиданий и ковариационной матрицей.
+
+Следовательно, сумма \(\sum_{j=1}^r (\nu_j^*)^2\) распределена при
+больших \(n\) также, как квадрат длины проекции \(z\) на \(\Linp(v)\).
+
+Поэтому \[
+\sum_{j=1}^r (\nu_j^*)^2 = \sum_{j=1}^r \frac{(\nu_j - np_j)^2}{np_j} \to \chi^2_{r-1}
+\]
+
+Недостатки доказательства:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Строго говоря, ЦПТ гарантирует, что каждый \(\nu_j^*\) в отдельности
+  имеет асимптотически нормальное распределение, а здесь требуется
+  асимптотическая нормальность вектора \(\nu^*\), то есть требуется ЦПТ
+  в векторной форме.
+\item
+  Деление на корень из математического ожидания выглядит магией, которая
+  потом раскрывается, а хотелось бы раскрыть её по ходу.
+\end{enumerate}
+
+Аналогичное доказательство можно найти в курсе
+\textcite{panchenko2005statistics}.
+
+\subsection{Выборочная дисперсия --- явно скалярно}\label{---}
+
+\subsection{Выборочная дисперсия --- матрицы}\label{--}
+
+\subsection{Сумма квадратов остатков - геометрия}\label{-----}
+
+\subsection{Сумма квадратов остатков - матрицы}\label{-----}
+
+\subsection{Мусор:}
+
+\ldots{} (где-то была копия)
+
+Замечаем, что \(\E(Mz) = M\E(z)=0\),
+\(\Var(Mz)=M\Var(z)M'=M\cdot I \cdot M'=\)
+
+\subsection{Про t и F похоже отдельно :)}\label{-t--f--}
+
+\printbibliography
+
+
+\end{document}
